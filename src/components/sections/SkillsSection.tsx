@@ -1,10 +1,10 @@
-
 "use client";
 
+import * as React from 'react';
 import { skillsData } from '@/lib/data';
 import { Badge } from '@/components/ui/badge';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { motion } from 'framer-motion'; // Use direct import
+import { motion } from 'framer-motion';
 import type { Skill } from '@/types';
 
 export function SkillsSection() {
@@ -29,7 +29,7 @@ export function SkillsSection() {
     })
   };
 
-  // Capitalized aliases for motion components, derived directly from 'motion'
+  // Capitalized aliases for motion components
   const MotionSection = motion.section;
   const MotionH2 = motion.h2;
   const MotionDiv = motion.div;
@@ -58,25 +58,30 @@ export function SkillsSection() {
             const categorySkills = skillsData.filter(skill => skill.category === category);
             if (categorySkills.length === 0) return null;
 
+            const CategoryIconComponent = categorySkills[0]?.icon;
+
             return (
               <MotionDiv key={category} variants={cardVariants}>
                 <Card className="h-full shadow-lg bg-background border-border hover:shadow-xl transition-shadow duration-300">
                   <CardHeader>
                     <CardTitle className="text-xl font-semibold text-primary flex items-center">
-                      {categorySkills[0]?.icon && <categorySkills[0].icon className="mr-2 h-5 w-5" />} 
+                      {CategoryIconComponent && React.createElement(CategoryIconComponent, { className: "mr-2 h-5 w-5" })} 
                       {category}
                     </CardTitle>
                   </CardHeader>
                   <CardContent>
                     <div className="flex flex-wrap gap-2">
-                      {categorySkills.map((skill, index) => (
-                        <MotionDiv key={skill.name} custom={index} variants={badgeVariants} initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.5 }}>
-                           <Badge variant="secondary" className="text-sm px-3 py-1.5 bg-secondary/70 text-secondary-foreground hover:bg-secondary transition-colors flex items-center gap-1.5">
-                            {skill.icon && <skill.icon className="h-4 w-4" />}
-                            {skill.name}
-                          </Badge>
-                        </MotionDiv>
-                      ))}
+                      {categorySkills.map((skill, index) => {
+                        const SkillIconComponent = skill.icon;
+                        return (
+                          <MotionDiv key={skill.name} custom={index} variants={badgeVariants} initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.5 }}>
+                             <Badge variant="secondary" className="text-sm px-3 py-1.5 bg-secondary/70 text-secondary-foreground hover:bg-secondary transition-colors flex items-center gap-1.5">
+                              {SkillIconComponent && React.createElement(SkillIconComponent, { className: "h-4 w-4" })}
+                              {skill.name}
+                            </Badge>
+                          </MotionDiv>
+                        );
+                      })}
                     </div>
                   </CardContent>
                 </Card>
