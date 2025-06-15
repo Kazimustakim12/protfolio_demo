@@ -1,7 +1,7 @@
 import type { Project, Skill, NavLinkItem, SocialLinkItem, ServiceItem, EducationItem } from '@/types';
 import { 
   Cpu, Database, Figma, Framer, GitBranch, Globe, Palette, PenTool, Server, Smartphone, Webhook,
-  Home, User, Briefcase, Layers, Mail, Twitter, Linkedin, Instagram, Cube, Search, GraduationCap, Award, FileText
+  Home, User, Briefcase, Layers, Mail, Twitter, Linkedin, Instagram, Box, Search, GraduationCap, Award, FileText
 } from 'lucide-react';
 
 export const projectsData: Project[] = [
@@ -56,7 +56,7 @@ export const socialLinks: SocialLinkItem[] = [
 
 // New data for service cards
 export const serviceItems: ServiceItem[] = [
-  { id: '1', title: 'UI/UX Designer', icon: Cube, color: 'hsl(150 60% 50%)' }, // Green
+  { id: '1', title: 'UI/UX Designer', icon: Box, color: 'hsl(150 60% 50%)' }, // Green - Replaced Cube with Box
   { id: '2', title: 'Web Designer', icon: Palette, color: 'hsl(200 70% 60%)' }, // Blue
   { id: '3', title: 'SEO Specialist', icon: Search, color: 'hsl(280 60% 65%)' }, // Purple
 ];
