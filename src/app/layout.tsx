@@ -1,8 +1,7 @@
 import type { Metadata } from 'next';
 import { Geist, Geist_Mono } from 'next/font/google';
 import './globals.css';
-import { Navbar } from '@/components/layout/Navbar';
-import { Footer } from '@/components/layout/Footer';
+import { Sidebar } from '@/components/layout/Sidebar';
 import { Toaster } from "@/components/ui/toaster";
 
 const geistSans = Geist({
@@ -16,8 +15,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: 'Portfolio Pro | Frontend Developer',
-  description: 'A modern, responsive portfolio website for a frontend developer showcasing skills and projects.',
+  title: 'Nicole Harper | Creative Designer',
+  description: 'Nicole Harper, a passionate Creative Designer specializing in UI/UX, web design, and SEO.',
 };
 
 export default function RootLayout({
@@ -27,12 +26,13 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="!scroll-smooth">
-      <body className={`${geistSans.variable} ${geistMono.variable} antialiased flex flex-col min-h-screen`}>
-        <Navbar />
-        <main className="flex-grow">
-          {children}
-        </main>
-        <Footer />
+      <body className={`${geistSans.variable} ${geistMono.variable} antialiased bg-background text-foreground`}>
+        <div className="flex min-h-screen">
+          <Sidebar />
+          <main className="flex-1 flex flex-col overflow-y-auto">
+            {children}
+          </main>
+        </div>
         <Toaster />
       </body>
     </html>
