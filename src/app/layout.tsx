@@ -1,15 +1,8 @@
 import type { Metadata } from 'next';
-import localFont from 'next/font/local';
 import './globals.css';
 import { Navbar } from '@/components/layout/Navbar';
 import { Toaster } from "@/components/ui/toaster";
 import { Footer } from '@/components/layout/Footer';
-
-const antonio = localFont({
-  src: '../../public/fonts/Antonio-VariableFont_wght.ttf',
-  variable: '--font-antonio',
-  display: 'swap',
-});
 
 export const metadata: Metadata = {
   title: 'Mustakim Kazi - Creative Developer',
@@ -23,7 +16,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="dark">
-      <body className={`${antonio.variable} font-sans antialiased`}>
+      <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link href="https://fonts.googleapis.com/css2?family=Antonio:wght@100..700&display=swap" rel="stylesheet" />
+      </head>
+      <body className={`font-sans antialiased`}>
         <Navbar />
         <main className="flex-1 flex flex-col">
           {children}
