@@ -1,12 +1,14 @@
 "use client";
 
-import { motion, useScroll, useTransform } from 'framer-motion';
+import { motion, useScroll, useTransform, MotionValue } from 'framer-motion';
 import Image from 'next/image';
 import { projectsData } from '@/lib/data';
 import { Badge } from '@/components/ui/badge';
 import { ArrowUpRight } from 'lucide-react';
 import Link from 'next/link';
 import { useRef } from 'react';
+import { useIsMobile } from '@/hooks/use-mobile';
+import { cn } from '@/lib/utils';
 
 const CARD_OFFSET = 10;
 const SCALE_FACTOR = 0.06;
@@ -15,7 +17,7 @@ const ProjectCard = ({ project, index, range, progress, targetScale }: {
     project: typeof projectsData[0], 
     index: number,
     range: [number, number],
-    progress: any,
+    progress: MotionValue<number>,
     targetScale: number,
 }) => {
     const container = useRef<HTMLDivElement>(null);
@@ -24,16 +26,18 @@ const ProjectCard = ({ project, index, range, progress, targetScale }: {
         offset: ['start end', 'start start']
     })
 
+    const isMobile = useIsMobile();
+
     const imageScale = useTransform(scrollYProgress, [0, 1], [2, 1])
     const scale = useTransform(progress, range, [index * SCALE_FACTOR + 1, targetScale]);
 
     return (
-        <div ref={container} className="h-[100vh] sticky top-0 flex items-center justify-center">
+        <div ref={container} className="h-auto md:h-[100vh] md:sticky top-0 flex items-center justify-center my-16 md:my-0">
             <motion.div 
                 className="group relative w-full max-w-4xl h-[60vh] min-h-[500px] rounded-3xl overflow-hidden"
                 style={{
-                    scale,
-                    top: `calc(-5vh + ${index * 25}px)`
+                    scale: isMobile ? 1 : scale,
+                    top: isMobile ? 0 : `calc(-5vh + ${index * 25}px)`
                 }}
             >
                 <CardContent project={project} imageScale={imageScale} />
@@ -81,9 +85,10 @@ export function ProjectsSection() {
         target: ref,
         offset: ['start start', 'end end']
     });
+    const isMobile = useIsMobile();
 
   return (
-    <section id="work" className="section-container relative">
+    <section id="work" className="section-container relative md:h-auto">
     <div className="text-center mb-16">
         <h2 className="section-heading">Featured Projects</h2>
         <p className="max-w-2xl mx-auto mt-4 text-lg text-muted-foreground">
@@ -91,7 +96,7 @@ export function ProjectsSection() {
         </p>
     </div>
 
-    <div ref={ref} className="relative">
+    <div ref={ref} className={cn("relative", !isMobile && 'h-[300vh]')}>
         {projectsData.map((project, index) => {
             const targetScale = 1 - ( (projectsData.length - index) * 0.05);
             return <ProjectCard key={project.id} project={project} index={index} progress={scrollYProgress} range={[index * .25, 1]} targetScale={targetScale}/>
