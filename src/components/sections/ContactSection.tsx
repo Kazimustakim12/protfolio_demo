@@ -31,9 +31,9 @@ export function ContactSection() {
       viewport={{ once: true, amount: 0.2 }}
     >
       <motion.div className="max-w-2xl mx-auto text-center" variants={itemVariants}>
-        <h2 className="text-4xl md:text-5xl font-bold mb-4">Get in Touch</h2>
+        <h2 className="text-4xl md:text-5xl font-bold mb-4">Let's Build Together</h2>
         <p className="text-lg text-muted-foreground mb-12">
-          Have a project in mind or just want to say hello? Drop me a line.
+          Have an idea waiting to be realized? Let's connect and make it happen.
         </p>
       </motion.div>
       <motion.div className="max-w-2xl mx-auto" variants={itemVariants}>

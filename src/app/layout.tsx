@@ -10,8 +10,8 @@ const geistSans = Geist({
 });
 
 export const metadata: Metadata = {
-  title: 'KAZI | Mustakim Kazi - Creative Developer',
-  description: 'Portfolio of Mustakim Kazi, a creative developer specializing in web and software solutions.',
+  title: 'Mustakim Kazi | Creative Developer & Web Architect',
+  description: 'Portfolio of Mustakim Kazi, a creative developer specializing in building beautiful, high-performance web experiences that drive results.',
 };
 
 export default function RootLayout({
@@ -20,7 +20,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="!scroll-smooth">
+    <html lang="en" className="!scroll-smooth dark">
       <body className={`${geistSans.variable} antialiased bg-background text-foreground`}>
         <Navbar />
         <main className="flex-1 flex flex-col">

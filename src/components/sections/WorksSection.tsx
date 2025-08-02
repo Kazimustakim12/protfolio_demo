@@ -28,7 +28,7 @@ const itemVariants = {
 const cardHoverVariants = {
   hover: {
     scale: 1.03,
-    boxShadow: "0px 10px 30px -5px rgba(0, 0, 0, 0.3)",
+    boxShadow: "0px 10px 30px -5px hsla(var(--foreground), 0.1)",
     transition: { duration: 0.3 },
   },
 };
@@ -47,7 +47,7 @@ export function WorksSection() {
         className="text-4xl md:text-5xl font-bold text-center mb-12"
         variants={itemVariants}
       >
-        Selected Works
+        Crafted With Passion
       </motion.h2>
       <motion.div
         className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
