@@ -43,12 +43,12 @@ export function AboutSection() {
           </h2>
           <div className="mt-6 space-y-6 text-muted-foreground text-lg">
             <p>
-              Hello! I&apos;m Mustakim Kazi, a passionate creative developer with a knack for building beautiful, high-performance websites and applications. My journey into code began with a fascination for how things work, and it has evolved into a career dedicated to crafting seamless digital experiences.
+              Hello! I'm Mustakim Kazi, a passionate creative developer with a knack for building beautiful, high-performance websites and applications. My journey into code began with a fascination for how things work, and it has evolved into a career dedicated to crafting seamless digital experiences.
             </p>
             <p>
-              I believe in the power of clean code, elegant design, and user-centric thinking. Whether I&apos;m architecting a complex backend or perfecting a pixel-perfect animation, my goal is always the same: to deliver solutions that not only meet business objectives but also delight users.
+              I believe in the power of clean code, elegant design, and user-centric thinking. Whether I'm architecting a complex backend or perfecting a pixel-perfect animation, my goal is always the same: to deliver solutions that not only meet business objectives but also delight users.
             </p>
-             <p>Here are a few technologies I&apos;ve been working with recently:</p>
+             <p>Here are a few technologies I've been working with recently:</p>
           </div>
           <motion.ul 
             className="mt-8 grid grid-cols-2 sm:grid-cols-3 gap-x-6 gap-y-4 text-muted-foreground"

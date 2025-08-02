@@ -29,7 +29,7 @@ export function ContactSection() {
         </h2>
         <p className="mt-4 text-lg text-muted-foreground">
           Have a project in mind or just want to say hello? My inbox is always open.
-          I&apos;ll get back to you as soon as possible.
+          I'll get back to you as soon as possible.
         </p>
       </div>
 
