@@ -40,7 +40,7 @@ export function ProjectsSection() {
         className="text-2xl font-bold tracking-tight text-center sm:text-3xl mb-12"
         variants={itemVariants}
       >
-        <span className="text-primary mr-2">03.</span>
+        <span className="text-primary mr-2">02.</span>
         Some Things I’ve Built
       </motion.h2>
 
