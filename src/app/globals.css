@@ -100,4 +100,21 @@
   .section-heading {
       @apply text-3xl font-bold tracking-tight text-foreground sm:text-4xl font-serif;
   }
+
+  .btn-fill-hover::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: hsl(var(--accent));
+    transform: translateX(-101%);
+    transition: transform 0.3s ease-in-out;
+    z-index: 0;
+  }
+
+  .btn-fill-hover:hover::before {
+    transform: translateX(0);
+  }
 }
