@@ -74,12 +74,14 @@ export function ServicesSection() {
             {servicesData.map((service, index) => (
               <div
                 key={service.id}
-                onMouseEnter={() => setHoveredIndex(index)}
-                onMouseLeave={() => setHoveredIndex(null)}
                 onClick={() => handleItemClick(index)}
                 className="border-b border-white/10 last:border-b-0 cursor-pointer"
               >
-                <motion.div variants={itemVariants}>
+                <motion.div 
+                  variants={itemVariants}
+                  onMouseEnter={() => setHoveredIndex(index)}
+                  onMouseLeave={() => setHoveredIndex(null)}
+                >
                   <div className="flex justify-between items-center py-6">
                     <span className="text-xl font-semibold">
                       <span className="text-accent text-3xl font-serif mr-4">0{index + 1}.</span>
