@@ -35,7 +35,7 @@ export function Navbar() {
         transition={{ duration: 0.4, ease: 'easeInOut' }}
         className="relative h-16 bg-card/50 backdrop-blur-lg border border-white/10 rounded-full flex items-center justify-between px-4 overflow-hidden"
       >
-        <motion.div layout>
+        <motion.div layout className="w-10 h-10">
           <Link href="/">
             <Image
               src="https://placehold.co/40x40.png"
