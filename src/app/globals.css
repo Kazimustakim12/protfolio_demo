@@ -4,65 +4,65 @@
 
 @layer base {
   :root {
-    --background: 215 28% 17%; /* #1b263b - Oxford Blue */
-    --foreground: 220 14% 96%; /* #f5f7fa */
+    --background: 222 47% 11%; /* Dark Slate Blue */
+    --foreground: 210 40% 98%; /* Almost White */
 
-    --card: 215 28% 14%; /* Darker Oxford Blue */
-    --card-foreground: 220 14% 96%;
+    --card: 222 47% 14%; /* Slightly lighter slate */
+    --card-foreground: 210 40% 98%;
 
-    --popover: 215 28% 14%;
-    --popover-foreground: 220 14% 96%;
+    --popover: 222 47% 11%;
+    --popover-foreground: 210 40% 98%;
 
-    --primary: 212 66% 84%; /* Light blue for primary text/elements */
-    --primary-foreground: 215 28% 17%;
+    --primary: 210 40% 98%;
+    --primary-foreground: 222 47% 11%;
 
-    --secondary: 210 22% 49%; /* #778da9 - Yinmn Blue */
-    --secondary-foreground: 220 14% 96%;
+    --secondary: 12 95% 62%; /* Vibrant Orange */
+    --secondary-foreground: 210 40% 98%;
 
-    --muted: 210 22% 40%;
-    --muted-foreground: 220 14% 80%;
+    --muted: 217 33% 17%;
+    --muted-foreground: 215 20% 65%;
 
-    --accent: 34 91% 64%; /* A gold/orange accent */
-    --accent-foreground: 215 28% 17%;
+    --accent: 12 95% 62%; /* Vibrant Orange */
+    --accent-foreground: 210 40% 98%;
     
-    --destructive: 0 63% 31%;
-    --destructive-foreground: 220 14% 96%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 210 40% 98%;
 
-    --border: 210 22% 49%;
-    --input: 210 22% 49%;
-    --ring: 34 91% 64%;
+    --border: 217 33% 20%;
+    --input: 217 33% 20%;
+    --ring: 12 95% 62%;
 
     --radius: 0.5rem;
   }
 
   .dark {
-    --background: 215 28% 17%; /* #1b263b - Oxford Blue */
-    --foreground: 220 14% 96%; /* #f5f7fa */
+    --background: 222 47% 11%; /* Dark Slate Blue */
+    --foreground: 210 40% 98%; /* Almost White */
 
-    --card: 215 28% 14%; /* Darker Oxford Blue */
-    --card-foreground: 220 14% 96%;
+    --card: 222 47% 14%; /* Slightly lighter slate */
+    --card-foreground: 210 40% 98%;
 
-    --popover: 215 28% 14%;
-    --popover-foreground: 220 14% 96%;
+    --popover: 222 47% 11%;
+    --popover-foreground: 210 40% 98%;
 
-    --primary: 212 66% 84%; /* Light blue for primary text/elements */
-    --primary-foreground: 215 28% 17%;
+    --primary: 210 40% 98%;
+    --primary-foreground: 222 47% 11%;
 
-    --secondary: 210 22% 49%; /* #778da9 - Yinmn Blue */
-    --secondary-foreground: 220 14% 96%;
+    --secondary: 12 95% 62%; /* Vibrant Orange */
+    --secondary-foreground: 210 40% 98%;
 
-    --muted: 210 22% 40%;
-    --muted-foreground: 220 14% 80%;
+    --muted: 217 33% 17%;
+    --muted-foreground: 215 20% 65%;
 
-    --accent: 34 91% 64%; /* A gold/orange accent */
-    --accent-foreground: 215 28% 17%;
+    --accent: 12 95% 62%; /* Vibrant Orange */
+    --accent-foreground: 210 40% 98%;
     
-    --destructive: 0 63% 31%;
-    --destructive-foreground: 220 14% 96%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 210 40% 98%;
 
-    --border: 210 22% 49%;
-    --input: 210 22% 49%;
-    --ring: 34 91% 64%;
+    --border: 217 33% 20%;
+    --input: 217 33% 20%;
+    --ring: 12 95% 62%;
   }
 }
 
@@ -79,19 +79,14 @@
   }
 }
 
-@layer components {
-  .animated-section {
-    @apply h-screen w-screen flex justify-center items-center relative;
-  }
-
-  .clip-mask {
-    @apply absolute w-24 h-24 rounded-full bg-background z-10;
-    clip-path: circle(5rem at center);
-  }
-}
-
 @layer utilities {
   .text-balance {
     text-wrap: balance;
+  }
+  .section-container {
+      @apply container mx-auto px-4 sm:px-6 lg:px-8 max-w-5xl py-24 sm:py-32;
+  }
+  .section-heading {
+      @apply text-3xl font-bold tracking-tight text-foreground sm:text-4xl font-playfair;
   }
 }
