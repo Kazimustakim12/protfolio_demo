@@ -15,6 +15,14 @@ export type Skill = {
   name:string;
 };
 
+export type Service = {
+  id: string;
+  title: string;
+  description: string;
+  imageUrl: string;
+  imageHint?: string;
+};
+
 export type SocialLinkItem = {
   name: string;
   href: string;

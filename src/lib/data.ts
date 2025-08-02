@@ -1,4 +1,4 @@
-import type { Project, Skill, SocialLinkItem, PricingPlan } from '@/types';
+import type { Project, Skill, SocialLinkItem, PricingPlan, Service } from '@/types';
 import { Github, Linkedin, Twitter } from 'lucide-react';
 
 export const socialLinks: SocialLinkItem[] = [
@@ -96,5 +96,36 @@ export const pricingPlans: PricingPlan[] = [
       'Dedicated Support',
     ],
     isFeatured: false,
+  },
+];
+
+export const servicesData: Service[] = [
+  {
+    id: 'service-1',
+    title: 'UI/UX Design',
+    description: 'Crafting intuitive and beautiful user interfaces that are a joy to use.',
+    imageUrl: 'https://placehold.co/400x250.png',
+    imageHint: 'ui ux design',
+  },
+  {
+    id: 'service-2',
+    title: 'Graphic Design',
+    description: 'Creating stunning visuals that communicate your brand\'s message effectively.',
+    imageUrl: 'https://placehold.co/400x250.png',
+    imageHint: 'graphic design abstract',
+  },
+  {
+    id: 'service-3',
+    title: 'Web Design',
+    description: 'Designing and building responsive, modern websites that look great on all devices.',
+    imageUrl: 'https://placehold.co/400x250.png',
+    imageHint: 'web design code',
+  },
+  {
+    id: 'service-4',
+    title: 'Branding',
+    description: 'Developing a strong and consistent brand identity that resonates with your audience.',
+    imageUrl: 'https://placehold.co/400x250.png',
+    imageHint: 'branding mood board',
   },
 ];
