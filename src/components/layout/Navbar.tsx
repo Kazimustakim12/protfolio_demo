@@ -21,18 +21,20 @@ export function Navbar() {
   });
 
   return (
-    <>
-      {/* Main Navbar */}
-      <motion.header
-        variants={{
-          visible: { y: 0, opacity: 1 },
-          hidden: { y: "-120%", opacity: 0 },
-        }}
-        animate={hidden ? "hidden" : "visible"}
-        transition={{ duration: 0.35, ease: "easeInOut" }}
-        className="fixed top-4 w-full flex justify-center z-50"
-      >
-        <nav className="flex items-center gap-4 bg-card/50 backdrop-blur-lg border border-white/10 rounded-full py-2 px-4">
+    <motion.header
+      className="fixed top-4 w-full flex justify-center z-50"
+    >
+      <div className="relative w-[500px] h-16">
+        {/* Main Navbar */}
+        <motion.nav
+          variants={{
+            visible: { y: 0, opacity: 1 },
+            hidden: { y: "-120%", opacity: 0 },
+          }}
+          animate={hidden ? "hidden" : "visible"}
+          transition={{ duration: 0.35, ease: "easeInOut" }}
+          className="absolute inset-0 flex items-center justify-between gap-4 bg-card/50 backdrop-blur-lg border border-white/10 rounded-full py-2 px-4"
+        >
           <Link href="/">
             <Image
               src="https://placehold.co/40x40.png"
@@ -70,21 +72,19 @@ export function Navbar() {
           <Button asChild>
             <Link href="#contact">Contact</Link>
           </Button>
-        </nav>
-      </motion.header>
+        </motion.nav>
 
-      {/* Sticky "Available for work" bar */}
-      <motion.div
-        variants={{
-          visible: { y: 0, opacity: 1 },
-          hidden: { y: "-120%", opacity: 0 },
-        }}
-        animate={hidden ? "visible" : "hidden"}
-        transition={{ duration: 0.35, ease: "easeInOut" }}
-        className="fixed top-0 w-full flex justify-center z-40"
-      >
-        <div className="bg-card/50 backdrop-blur-lg border-b border-white/10 w-full">
-            <div className="container mx-auto px-4 sm:px-6 lg:px-8 h-14 flex items-center justify-center">
+        {/* Sticky "Available for work" bar */}
+        <motion.div
+           variants={{
+            visible: { y: 0, opacity: 1 },
+            hidden: { y: "-120%", opacity: 0 },
+          }}
+          animate={hidden ? "visible" : "hidden"}
+          transition={{ duration: 0.35, ease: "easeInOut" }}
+          className="absolute inset-0 bg-card/50 backdrop-blur-lg border border-white/10 rounded-full"
+        >
+            <div className="h-full flex items-center justify-center">
                 <div className="flex items-center gap-3">
                     <span className="relative flex h-3 w-3">
                         <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
@@ -93,8 +93,8 @@ export function Navbar() {
                     <p className="text-sm font-medium text-foreground">Available for work</p>
                 </div>
             </div>
-        </div>
-      </motion.div>
-    </>
+        </motion.div>
+      </div>
+    </motion.header>
   );
 }
