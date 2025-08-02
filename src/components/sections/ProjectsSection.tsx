@@ -24,13 +24,13 @@ const ProjectCard = ({ project, index }: { project: typeof projectsData[0], inde
         offset: ['start end', 'end start']
     });
 
-    const scale = useTransform(scrollYProgress, [0, 0.4, 0.6, 1], [1, 1, 0.9, 0.9]);
-    const opacity = useTransform(scrollYProgress, [0, 0.4, 0.8, 1], [1, 1, 0.5, 0]);
+    const scale = useTransform(scrollYProgress, [0.1, 0.4], [0.9, 1]);
+    const opacity = useTransform(scrollYProgress, [0, 0.2, 0.8, 1], [0, 1, 1, 0]);
 
     return (
-        <div ref={ref} className="h-screen flex items-center justify-center">
+        <motion.div ref={ref} style={{opacity}} className="h-screen flex items-center justify-center">
             <motion.div 
-                style={{ scale, opacity, top: `${(index + 1) * 2}rem` }}
+                style={{ scale, top: `${(index * 2)}rem` }}
                 className="group sticky w-full max-w-4xl h-[60vh] min-h-[500px] rounded-3xl overflow-hidden"
             >
                 <Link href={project.liveDemoUrl || '#'} target='_blank' className="block w-full h-full">
@@ -62,7 +62,7 @@ const ProjectCard = ({ project, index }: { project: typeof projectsData[0], inde
                     </div>
                 </Link>
             </motion.div>
-        </div>
+        </motion.div>
     )
 }
 
@@ -70,7 +70,7 @@ export function ProjectsSection() {
   return (
     <motion.section 
       id="work" 
-      className="section-container"
+      className="section-container relative"
       variants={sectionVariants}
       initial="hidden"
       whileInView="visible"
