@@ -1,10 +1,54 @@
 "use client";
 
-import React from 'react';
+import React, { useRef } from 'react';
+import { gsap } from 'gsap';
+import { useGSAP } from '@gsap/react';
 
 export function AnimatedCoder() {
+  const container = useRef<HTMLDivElement>(null);
+  let timeline: gsap.core.Timeline;
+
+  useGSAP(
+    () => {
+      timeline = gsap.timeline({ paused: true });
+
+      timeline
+        .to("#core-pulse", {
+          scale: 1.15,
+          duration: 0.4,
+          ease: "power1.inOut",
+        })
+        .to("#core-glow", {
+            opacity: 1,
+            scale: 1.2,
+            duration: 0.4,
+            ease: "power1.inOut",
+        }, "<")
+        .to(".orbiting-shape", {
+            scale: 1.2,
+            duration: 0.4,
+            stagger: 0.1,
+            ease: "power1.inOut",
+        }, "<");
+    },
+    { scope: container }
+  );
+
+  const handleMouseEnter = () => {
+    timeline.play();
+  };
+
+  const handleMouseLeave = () => {
+    timeline.reverse();
+  };
+
   return (
-    <div className="relative w-[500px] h-[500px] flex items-center justify-center">
+    <div 
+        ref={container}
+        className="relative w-[500px] h-[500px] flex items-center justify-center cursor-pointer"
+        onMouseEnter={handleMouseEnter}
+        onMouseLeave={handleMouseLeave}
+    >
       <style jsx>{`
         .glow {
           filter: drop-shadow(0 0 10px hsl(var(--accent) / 0.7));
@@ -62,18 +106,18 @@ export function AnimatedCoder() {
         </g>
 
         {/* Central Core */}
-        <g transform="translate(200, 200)">
-          <circle cx="0" cy="0" r="25" fill="hsl(var(--accent) / 0.2)" className="glow pulse" />
-          <circle cx="0" cy="0" r="20" fill="hsl(var(--accent))" className="glow pulse" style={{animationDelay: '0.2s'}}/>
+        <g transform="translate(200, 200)" id="central-core">
+          <circle id="core-glow" cx="0" cy="0" r="25" fill="hsl(var(--accent) / 0.2)" className="glow" opacity="0.8"/>
+          <circle id="core-pulse" cx="0" cy="0" r="20" fill="hsl(var(--accent))" className="glow pulse" style={{animationDelay: '0.2s'}}/>
           
           {/* Orbiting Satellites */}
-          <g className="orbit">
+          <g className="orbit orbiting-shape">
               <circle cx="0" cy="0" r="8" fill="hsl(var(--primary))" className="soft-glow" />
           </g>
-          <g className="orbit-reverse" style={{animationDelay: '-5s'}}>
+          <g className="orbit-reverse orbiting-shape" style={{animationDelay: '-5s'}}>
               <rect x="-7.5" y="-7.5" width="15" height="15" rx="4" fill="hsl(var(--primary))" className="soft-glow" />
           </g>
-           <g className="orbit" style={{animationDuration: '15s', animationDelay: '-10s'}}>
+           <g className="orbit orbiting-shape" style={{animationDuration: '15s', animationDelay: '-10s'}}>
               <path d="M0,-10 L10,10 L-10,10 Z" fill="hsl(var(--primary))" className="soft-glow" transform="translate(0, 50) scale(0.8)" />
           </g>
 
