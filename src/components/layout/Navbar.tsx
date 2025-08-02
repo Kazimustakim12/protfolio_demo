@@ -2,8 +2,9 @@
 
 import Link from 'next/link';
 import Image from 'next/image';
-import { motion } from 'framer-motion';
+import { motion, useMotionValueEvent, useScroll } from 'framer-motion';
 import { Button } from '@/components/ui/button';
+import { useState } from 'react';
 
 export function Navbar() {
   const navLinks = [
@@ -12,12 +13,28 @@ export function Navbar() {
     { name: 'Projects', href: '#work' },
     { name: 'Blog', href: '#' },
   ];
+  
+  const { scrollY } = useScroll();
+  const [hidden, setHidden] = useState(false);
+
+  useMotionValueEvent(scrollY, "change", (latest) => {
+    const previous = scrollY.getPrevious();
+    if (previous && latest > previous && latest > 150) {
+      setHidden(true);
+    } else {
+      setHidden(false);
+    }
+  });
+
 
   return (
     <motion.header 
-      initial={{ y: -100, opacity: 0 }}
-      animate={{ y: 0, opacity: 1 }}
-      transition={{ duration: 0.5, delay: 1 }}
+      variants={{
+        visible: { y: 0, opacity: 1 },
+        hidden: { y: "-100%", opacity: 0 },
+      }}
+      animate={hidden ? "hidden" : "visible"}
+      transition={{ duration: 0.35, ease: "easeInOut" }}
       className="fixed top-4 left-1/2 -translate-x-1/2 z-50"
     >
       <nav className="flex items-center gap-4 bg-card/50 backdrop-blur-lg border border-white/10 rounded-full p-2">
