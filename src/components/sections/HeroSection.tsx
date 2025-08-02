@@ -23,15 +23,7 @@ export function HeroSection() {
   });
 
   return (
-    <section className="relative flex-1 flex flex-col justify-center items-center text-center overflow-hidden py-32 md:py-48 min-h-screen">
-      <Image
-        src="https://placehold.co/1920x1080.png"
-        alt="Circuit Background"
-        fill
-        className="object-cover opacity-5 mix-blend-soft-light"
-        data-ai-hint="circuit board dark"
-      />
-
+    <section className="flex-1 flex flex-col justify-center items-center text-center">
       <motion.div
         variants={containerVariants}
         initial="hidden"

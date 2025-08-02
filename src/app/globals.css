@@ -72,27 +72,26 @@
   }
   body {
     @apply bg-background text-foreground;
-    position: relative;
-  }
-
-  body::before {
-    content: '';
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-image:
-      radial-gradient(circle at center, rgba(255,255,255,0.03) 0, rgba(255,255,255,0) 4px),
-      repeating-linear-gradient(0deg, rgba(255,255,255, 0.02) 0, rgba(255,255,255, 0.02) 1px, transparent 1px, transparent 14px),
-      repeating-linear-gradient(90deg, rgba(255,255,255, 0.02) 0, rgba(255,255,255, 0.02) 1px, transparent 1px, transparent 14px);
-    background-size: 14px 14px;
-    opacity: 0.6;
-    z-index: -1;
-    pointer-events: none;
   }
   
   html {
     scroll-behavior: smooth;
+  }
+}
+
+@layer components {
+  .animated-section {
+    @apply h-screen w-screen flex justify-center items-center relative;
+  }
+
+  .clip-mask {
+    @apply absolute w-24 h-24 rounded-full bg-background z-10;
+    clip-path: circle(5rem at center);
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
   }
 }

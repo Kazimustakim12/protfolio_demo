@@ -24,7 +24,7 @@ export function ProjectsSection() {
   return (
     <motion.section 
       id="work" 
-      className="container mx-auto px-4 sm:px-6 lg:px-8 py-24 sm:py-32"
+      className="container mx-auto px-4 sm:px-6 lg:px-8"
       variants={sectionVariants}
       initial="hidden"
       whileInView="visible"
