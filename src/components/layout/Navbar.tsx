@@ -12,9 +12,11 @@ export function Navbar() {
 
   useMotionValueEvent(scrollY, "change", (latest) => {
     const previous = scrollY.getPrevious() ?? 0;
+    // Set shrunken state if scrolling down and past 150px
     if (latest > previous && latest > 150) {
       setIsShrunken(true);
     } else {
+      // Set expanded state if scrolling up
       setIsShrunken(false);
     }
   });
