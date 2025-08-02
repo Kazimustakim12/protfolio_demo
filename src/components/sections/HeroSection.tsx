@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import { AnimatedCoder } from "@/components/AnimatedCoder";
+import { MemoryGame } from "@/components/MemoryGame";
 
 export function HeroSection() {
 
@@ -76,7 +76,7 @@ export function HeroSection() {
             variants={imageVariants}
             className="relative hidden md:flex justify-center items-center h-full"
         >
-            <AnimatedCoder />
+            <MemoryGame />
         </motion.div>
       </motion.div>
     </section>
