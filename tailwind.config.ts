@@ -20,8 +20,8 @@ const config = {
       },
       extend: {
         fontFamily: {
-          sans: ["var(--font-antonio)", ...fontFamily.sans],
-          serif: ["var(--font-antonio)", ...fontFamily.serif],
+          sans: ["var(--font-antonio)"],
+          serif: ["var(--font-antonio)"],
         },
         colors: {
           border: "hsl(var(--border))",
