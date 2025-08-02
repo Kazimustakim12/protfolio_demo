@@ -24,7 +24,7 @@ export function ContactSection() {
   return (
     <motion.section
       id="contact"
-      className="container mx-auto px-4 sm:px-6 lg:px-8 py-24"
+      className="container mx-auto px-4 sm:px-6 lg:px-8 py-24 h-full flex flex-col justify-center"
       variants={sectionVariants}
       initial="hidden"
       whileInView="visible"
