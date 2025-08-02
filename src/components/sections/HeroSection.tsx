@@ -1,36 +1,72 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { KaziLogo } from "@/components/KaziLogo";
+import Link from 'next/link';
+import { Button } from "../ui/button";
+import { ChevronDown } from "lucide-react";
 
 export function HeroSection() {
-  return (
-    <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden">
-        {/* Background KAZI logo */}
-        <KaziLogo className="absolute inset-0 w-full h-full object-cover text-foreground/5" />
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.2,
+        delayChildren: 0.2,
+      },
+    },
+  };
 
+  const itemVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } },
+  };
+
+  return (
+    <motion.section
+      id="home"
+      className="relative min-h-[calc(100vh-5rem)] flex items-center justify-center overflow-hidden"
+      variants={containerVariants}
+      initial="hidden"
+      animate="visible"
+    >
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 z-10">
-        <div className="text-center">
-            <motion.p 
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
-                className="text-lg font-medium tracking-widest uppercase text-primary mb-4"
-            >
-                Mustakim Kazi
-            </motion.p>
-            <motion.h1
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
-                className="text-5xl sm:text-6xl lg:text-8xl font-extrabold tracking-tighter uppercase"
-            >
-                Creative Developer
-                <br/>
-                & <span className="text-primary">Web</span> Architect
-            </motion.h1>
+        <div className="max-w-3xl mx-auto text-center">
+          <motion.h1
+            variants={itemVariants}
+            className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-foreground"
+          >
+            Crafting fast, modern websites for bold ideas
+          </motion.h1>
+
+          <motion.p
+            variants={itemVariants}
+            className="mt-6 text-lg text-muted-foreground"
+          >
+            Started in Malta. Focused on performance, design, and results.
+          </motion.p>
+
+          <motion.div
+            variants={itemVariants}
+            className="mt-10 flex flex-wrap justify-center gap-4"
+          >
+            <Button asChild size="lg">
+              <Link href="#projects">View Work</Link>
+            </Button>
+            <Button asChild size="lg" variant="secondary">
+              <Link href="#contact">Let’s Talk</Link>
+            </Button>
+          </motion.div>
         </div>
       </div>
-    </section>
+      
+      <motion.div
+        className="absolute bottom-10"
+        animate={{ y: [0, 10, 0] }}
+        transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
+      >
+        <ChevronDown className="w-6 h-6 text-muted-foreground" />
+      </motion.div>
+    </motion.section>
   );
 }

@@ -1,62 +1,84 @@
-import type { Project, Service, Skill, NavLinkItem } from '@/types';
+import type { Project, Service, Skill, NavLinkItem, SocialLinkItem } from '@/types';
+import { 
+  Cpu, Database, Figma, Framer, GitBranch, Globe, Palette, PenTool, Server, Smartphone, Webhook,
+  Home, User, Briefcase, Layers, Mail, Twitter, Linkedin, Instagram
+} from 'lucide-react';
 
 export const navLinks: NavLinkItem[] = [
-  { name: 'Works', href: '#works' },
-  { name: 'Services', href: '#services' },
-  { name: 'Contact', href: '#contact' },
+  { name: 'Home', href: '#home', icon: Home },
+  { name: 'About', href: '#about', icon: User },
+  { name: 'Projects', href: '#projects', icon: Briefcase },
+  { name: 'Services', href: '#services', icon: Layers },
+  { name: 'Contact', href: '#contact', icon: Mail },
+];
+
+export const socialLinks: SocialLinkItem[] = [
+  { name: 'Twitter', href: '#', icon: Twitter },
+  { name: 'LinkedIn', href: '#', icon: Linkedin },
+  { name: 'Instagram', href: '#', icon: Instagram },
+  { name: 'Framer', href: '#', icon: Framer },
 ];
 
 export const projectsData: Project[] = [
-    {
-        id: 'proj-1',
-        title: 'E-commerce Platform',
-        description: 'A full-stack e-commerce solution with a custom CMS, product management, and Stripe integration.',
-        imageUrl: 'https://placehold.co/1200x800.png',
-        imageHint: 'online store',
-        techStack: ['Next.js', 'TypeScript', 'Tailwind CSS', 'Firebase', 'Stripe'],
-        liveDemoUrl: '#',
-        githubRepoUrl: '#',
-    },
-    {
-        id: 'proj-2',
-        title: 'AI Content Generator',
-        description: 'A SaaS platform that uses generative AI to create marketing copy and blog posts for businesses.',
-        imageUrl: 'https://placehold.co/1200x800.png',
-        imageHint: 'artificial intelligence',
-        techStack: ['React', 'Genkit', 'Node.js', 'Express', 'MongoDB'],
-        liveDemoUrl: '#',
-        githubRepoUrl: '#',
-    },
-    {
-        id: 'proj-3',
-        title: 'Portfolio Website',
-        description: 'This very portfolio, designed with a minimal aesthetic and built with Next.js and Framer Motion.',
-        imageUrl: 'https://placehold.co/1200x800.png',
-        imageHint: 'personal website',
-        techStack: ['Next.js', 'Framer Motion', 'Tailwind CSS', 'TypeScript'],
-        liveDemoUrl: '#',
-        githubRepoUrl: '#',
-    },
+  {
+      id: 'proj-1',
+      title: 'Agency Landing Page',
+      description: 'A sleek and modern landing page for a digital agency, built with Next.js and Tailwind CSS.',
+      imageUrl: 'https://placehold.co/1200x900.png',
+      imageHint: 'digital agency',
+      techStack: ['Next.js', 'Tailwind CSS', 'Framer Motion'],
+      liveDemoUrl: '#',
+      githubRepoUrl: '#',
+  },
+  {
+      id: 'proj-2',
+      title: 'SaaS Platform Dashboard',
+      description: 'A comprehensive dashboard for a SaaS product, featuring complex data visualizations and user management.',
+      imageUrl: 'https://placehold.co/1200x900.png',
+      imageHint: 'saas dashboard',
+      techStack: ['React', 'TypeScript', 'Recharts', 'Firebase'],
+      liveDemoUrl: '#',
+      githubRepoUrl: '#',
+  },
 ];
 
 export const servicesData: Service[] = [
-    {
-        title: 'Custom Web Application Development',
-        description: 'I build bespoke web applications from the ground up, tailored to your unique business needs. From complex internal tools to customer-facing platforms, I deliver scalable, secure, and high-performance solutions.'
-    },
-    {
-        title: 'AI Integration & GenAI Solutions',
-        description: 'Leverage the power of Artificial Intelligence. I can integrate cutting-edge GenAI models into your existing applications or build new AI-powered features to automate tasks, generate content, and provide intelligent insights.'
-    },
-    {
-        title: 'UI/UX Design & Prototyping',
-        description: 'Good design is good business. I create intuitive, user-friendly interfaces that not only look beautiful but are also a joy to use. I provide interactive prototypes and a complete design system for your product.'
-    },
-    {
-        title: 'API Development & Integration',
-        description: 'I design and build robust, secure, and well-documented RESTful and GraphQL APIs. I can also integrate your application with third-party services to extend its functionality.'
-    }
+  {
+      title: 'Modern Websites',
+      description: 'I create stunning, high-performance websites using the latest technologies like Next.js and React.',
+      icon: Globe
+  },
+  {
+      title: 'WordPress Builds',
+      description: 'Custom WordPress themes and plugins, providing a powerful and easy-to-use CMS for your content.',
+      icon: PenTool
+  },
+  {
+      title: 'SEO Optimization',
+      description: 'Improve your search engine rankings and drive organic traffic with technical SEO and on-page strategies.',
+      icon: Server
+  }
 ];
 
+export const skillsData: Skill[] = [
+  { name: 'Next.js', icon: Globe },
+  { name: 'React', icon: Globe },
+  { name: 'WordPress', icon: PenTool },
+  { name: 'Tailwind CSS', icon: Palette },
+  { name: 'Figma', icon: Figma },
+  { name: 'Firebase', icon: Database },
+  { name: 'Node.js', icon: Server },
+  { name: 'Git', icon: GitBranch },
+  { name: 'TypeScript', icon: Code },
+  { name: 'JavaScript', icon: Code },
+];
 
-export const skillsData: Skill[] = [];
+// Add Code icon to the import from lucide-react in the future if needed. For now, this is a placeholder.
+function Code(props: any) {
+  return (
+    <svg {...props} xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <polyline points="16 18 22 12 16 6"></polyline>
+      <polyline points="8 6 2 12 8 18"></polyline>
+    </svg>
+  );
+}

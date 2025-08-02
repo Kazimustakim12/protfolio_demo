@@ -1,49 +1,54 @@
 "use client";
 
+import { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import { Button } from '@/components/ui/button';
-
-const navLinks = [
-  { name: 'Works', href: '#works' },
-  { name: 'Services', href: '#services' },
-];
+import { KaziLogo } from '../KaziLogo';
+import { navLinks } from '@/lib/data';
 
 export function Navbar() {
-  return (
-    <motion.nav 
-      initial={{ y: -100, opacity: 0 }}
-      animate={{ y: 0, opacity: 1 }}
-      transition={{ duration: 0.5, ease: "easeOut" }}
-      className="fixed top-0 z-50 w-full"
-    >
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-24">
-          <Link href="/" className="text-xl font-bold text-foreground hover:text-muted-foreground transition-colors">
-            Mustakim Kazi
-          </Link>
+  const [hasScrolled, setHasScrolled] = useState(false);
 
-          <div className="hidden md:flex items-center space-x-8">
-            {navLinks.map((link) => (
-              <motion.a
-                key={link.name}
-                href={link.href}
-                whileHover={{ y: -2 }}
-                className="text-sm font-medium transition-colors hover:text-primary"
-              >
-                {link.name}
-              </motion.a>
-            ))}
-            <Button asChild>
-                <Link href="#contact">CONTACT</Link>
-            </Button>
+  useEffect(() => {
+    const handleScroll = () => {
+      setHasScrolled(window.scrollY > 20);
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  return (
+    <header className="fixed top-0 z-50 w-full">
+      <AnimatePresence>
+        <motion.nav
+          initial={{ y: 0 }}
+          animate={{ y: hasScrolled ? 0 : -100 }}
+          transition={{ duration: 0.3, ease: 'easeOut' }}
+          className="absolute top-0 left-0 right-0"
+        >
+          <div className="mt-4 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+            <div className="flex h-16 items-center justify-between rounded-xl border border-border/50 bg-background/80 px-4 shadow-sm backdrop-blur-md">
+              <Link href="/" className="flex items-center gap-2 text-xl font-bold text-foreground transition-colors">
+                <KaziLogo className="w-6 h-6" />
+                <span>KAZI</span>
+              </Link>
+
+              <div className="hidden md:flex items-center space-x-2">
+                {navLinks.map((link) => (
+                  <Button key={link.name} variant="ghost" asChild>
+                    <Link href={link.href}>{link.name}</Link>
+                  </Button>
+                ))}
+              </div>
+
+              <Button asChild>
+                <Link href="#contact">Let's Talk</Link>
+              </Button>
+            </div>
           </div>
-          
-          <div className="md:hidden">
-            {/* Minimalist design might not need a mobile menu, but can be added here */}
-          </div>
-        </div>
-      </div>
-    </motion.nav>
+        </motion.nav>
+      </AnimatePresence>
+    </header>
   );
 }

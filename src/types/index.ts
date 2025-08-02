@@ -15,16 +15,22 @@ export type Project = {
 export type Service = {
   title: string;
   description: string;
+  icon?: LucideIcon;
 };
 
 export type Skill = {
   name: string;
-  category: 'Languages' | 'Frameworks & Libraries' | 'Tools & Platforms' | 'Databases' | 'Design';
-  icon?: LucideIcon; 
+  icon?: LucideIcon | ((props: any) => JSX.Element);
 };
 
 export type NavLinkItem = {
   name: string;
   href: string;
   icon?: LucideIcon | ForwardRefExoticComponent<Omit<LucideProps, "ref"> & RefAttributes<SVGSVGElement>>;
+};
+
+export type SocialLinkItem = {
+  name: string;
+  href: string;
+  icon: LucideIcon;
 };

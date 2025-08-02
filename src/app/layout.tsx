@@ -1,17 +1,18 @@
 import type { Metadata } from 'next';
-import { Geist } from 'next/font/google';
+import { Inter } from 'next/font/google';
 import './globals.css';
 import { Navbar } from '@/components/layout/Navbar';
+import { Footer } from '@/components/layout/Footer';
 import { Toaster } from "@/components/ui/toaster";
 
-const geistSans = Geist({
-  variable: '--font-geist-sans',
+const inter = Inter({
   subsets: ['latin'],
+  variable: '--font-inter',
 });
 
 export const metadata: Metadata = {
-  title: 'Mustakim Kazi | Creative Developer & Web Architect',
-  description: 'Portfolio of Mustakim Kazi, a creative developer specializing in building beautiful, high-performance web experiences that drive results.',
+  title: 'KAZI - Crafting fast, modern websites for bold ideas.',
+  description: 'Personal portfolio of Mustakim Kazi, a freelance web developer and agency based in Malta, focused on performance, design, and results.',
 };
 
 export default function RootLayout({
@@ -20,12 +21,13 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="!scroll-smooth dark">
-      <body className={`${geistSans.variable} antialiased bg-background text-foreground`}>
+    <html lang="en" className="!scroll-smooth">
+      <body className={`${inter.variable} font-sans antialiased bg-background text-foreground`}>
         <Navbar />
-        <main className="flex-1 flex flex-col">
+        <main className="flex-1 flex flex-col pt-20">
           {children}
         </main>
+        <Footer />
         <Toaster />
       </body>
     </html>
