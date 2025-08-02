@@ -2,11 +2,12 @@
 
 import Link from 'next/link';
 import { motion } from 'framer-motion';
+import { Button } from '@/components/ui/button';
 
 const navLinks = [
   { name: 'Works', href: '#works' },
   { name: 'Services', href: '#services' },
-  { name: 'Contact', href: '#contact' },
+  { name: 'Insights', href: '#insights' },
 ];
 
 export function Navbar() {
@@ -23,17 +24,20 @@ export function Navbar() {
             Mustakim Kazi
           </Link>
 
-          <div className="hidden md:flex space-x-8">
+          <div className="hidden md:flex items-center space-x-8">
             {navLinks.map((link) => (
               <motion.a
                 key={link.name}
                 href={link.href}
-                whileHover={{ scale: 1.1 }}
-                className="text-sm font-medium transition-colors hover:text-muted-foreground"
+                whileHover={{ y: -2 }}
+                className="text-sm font-medium transition-colors hover:text-primary"
               >
                 {link.name}
               </motion.a>
             ))}
+            <Button asChild>
+                <Link href="#contact">CONTACT</Link>
+            </Button>
           </div>
           
           <div className="md:hidden">
