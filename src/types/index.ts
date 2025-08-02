@@ -1,5 +1,4 @@
-import type { LucideIcon, LucideProps } from 'lucide-react';
-import type { ForwardRefExoticComponent, RefAttributes } from 'react';
+import type { LucideIcon } from 'lucide-react';
 
 export type Project = {
   id: string;
@@ -20,13 +19,11 @@ export type Service = {
 
 export type Skill = {
   name: string;
-  icon?: LucideIcon | ((props: any) => JSX.Element);
 };
 
 export type NavLinkItem = {
   name: string;
   href: string;
-  icon?: LucideIcon | ForwardRefExoticComponent<Omit<LucideProps, "ref"> & RefAttributes<SVGSVGElement>>;
 };
 
 export type SocialLinkItem = {

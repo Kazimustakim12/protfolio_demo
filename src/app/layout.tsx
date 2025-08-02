@@ -11,8 +11,8 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: 'KAZI - Crafting fast, modern websites for bold ideas.',
-  description: 'Personal portfolio of Mustakim Kazi, a freelance web developer and agency based in Malta, focused on performance, design, and results.',
+  title: 'Mustakim Kazi - Creative Developer',
+  description: 'Personal portfolio of Mustakim Kazi, a creative developer focused on building beautiful and functional web experiences.',
 };
 
 export default function RootLayout({
@@ -21,10 +21,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="!scroll-smooth">
+    <html lang="en" className="!scroll-smooth dark">
       <body className={`${inter.variable} font-sans antialiased bg-background text-foreground`}>
         <Navbar />
-        <main className="flex-1 flex flex-col pt-20">
+        <main className="flex-1 flex flex-col px-6 sm:px-8 md:px-12">
           {children}
         </main>
         <Footer />

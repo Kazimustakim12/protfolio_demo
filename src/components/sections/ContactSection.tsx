@@ -1,64 +1,26 @@
 "use client";
 
 import { motion } from 'framer-motion';
-import { ContactForm } from '@/components/ContactForm';
-import { socialLinks } from '@/lib/data';
-import { Button } from '../ui/button';
-
-const sectionVariants = {
-  hidden: { opacity: 0, y: 50 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: {
-      duration: 0.5,
-      staggerChildren: 0.3,
-    },
-  },
-};
-
-const itemVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.5 } }
-};
+import { Button } from '@/components/ui/button';
 
 export function ContactSection() {
   return (
     <motion.section
       id="contact"
-      className="container mx-auto px-4 sm:px-6 lg:px-8 py-24 md:py-32"
-      variants={sectionVariants}
-      initial="hidden"
-      whileInView="visible"
-      viewport={{ once: true, amount: 0.2 }}
+      className="max-w-xl mx-auto text-center py-24 md:py-32"
+      initial={{ opacity: 0, y: 50 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, amount: 0.3 }}
+      transition={{ duration: 0.8, ease: "easeOut" }}
     >
-      <div className="max-w-2xl mx-auto text-center">
-        <motion.h2 className="text-3xl md:text-4xl font-bold tracking-tight" variants={itemVariants}>
-            Let's build something great together
-        </motion.h2>
-        <motion.p className="mt-4 text-lg text-muted-foreground" variants={itemVariants}>
-          Have a project in mind? I'd love to hear about it.
-        </motion.p>
-      </div>
-      
-      <div className="mt-16 max-w-2xl mx-auto">
-        <motion.div className="mb-12" variants={itemVariants}>
-          <ContactForm />
-        </motion.div>
-        
-        <motion.div className="text-center" variants={itemVariants}>
-          <p className="text-muted-foreground mb-4">Or connect with me on social media</p>
-          <div className="flex justify-center gap-4">
-            {socialLinks.map((link) => (
-              <Button key={link.name} asChild variant="ghost" size="icon">
-                <a href={link.href} target="_blank" rel="noopener noreferrer" aria-label={link.name}>
-                  <link.icon className="h-6 w-6" />
-                </a>
-              </Button>
-            ))}
-          </div>
-        </motion.div>
-      </div>
+      <h2 className="text-lg font-mono text-primary mb-4">04. What’s Next?</h2>
+      <h3 className="text-4xl md:text-5xl font-bold mb-4">Get In Touch</h3>
+      <p className="text-muted-foreground mb-8">
+        Although I’m not currently looking for any new opportunities, my inbox is always open. Whether you have a question or just want to say hi, I’ll try my best to get back to you!
+      </p>
+      <Button asChild size="lg">
+        <a href="mailto:contact@example.com">Say Hello</a>
+      </Button>
     </motion.section>
   );
 }
