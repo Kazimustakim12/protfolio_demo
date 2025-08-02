@@ -38,6 +38,16 @@ export const projectsData: Project[] = [
       liveDemoUrl: '#',
       githubRepoUrl: '#',
   },
+  {
+    id: 'proj-4',
+    title: 'Creative Portfolio',
+    description: 'A personal portfolio website for a creative professional, designed to showcase their work in a visually stunning and interactive way. Includes a blog and case studies.',
+    imageUrl: 'https://placehold.co/1280x720.png',
+    imageHint: 'portfolio website creative',
+    techStack: ['Framer Motion', 'React', 'GSAP', 'Contentful'],
+    liveDemoUrl: '#',
+    githubRepoUrl: '#',
+  },
 ];
 
 export const skillsData: Skill[] = [
