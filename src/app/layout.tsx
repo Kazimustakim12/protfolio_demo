@@ -1,16 +1,15 @@
 import type { Metadata } from 'next';
-import { Antonio } from 'next/font/google';
+import localFont from 'next/font/local';
 import './globals.css';
 import { Navbar } from '@/components/layout/Navbar';
 import { Toaster } from "@/components/ui/toaster";
 import { Footer } from '@/components/layout/Footer';
 
-const antonio = Antonio({
-  subsets: ['latin'],
+const antonio = localFont({
+  src: '../../public/fonts/Antonio-VariableFont_wght.ttf',
   variable: '--font-antonio',
-  weight: ['100', '400', '700'],
+  display: 'swap',
 });
-
 
 export const metadata: Metadata = {
   title: 'Mustakim Kazi - Creative Developer',
@@ -30,8 +29,3 @@ export default function RootLayout({
           {children}
         </main>
         <Footer />
-        <Toaster />
-      </body>
-    </html>
-  );
-}
