@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import { MemoryGame } from "@/components/MemoryGame";
+import { RockPaperScissors } from "@/components/RockPaperScissors";
 
 export function HeroSection() {
 
@@ -21,7 +21,7 @@ export function HeroSection() {
     visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut" } },
   };
 
-  const imageVariants = {
+  const gameVariants = {
     hidden: { opacity: 0, scale: 0.8 },
     visible: { opacity: 1, scale: 1, transition: { duration: 0.8, ease: "easeOut", delay: 0.4 } },
   };
@@ -73,10 +73,10 @@ export function HeroSection() {
           </motion.div>
         </div>
         <motion.div 
-            variants={imageVariants}
+            variants={gameVariants}
             className="relative hidden md:flex justify-center items-center h-full"
         >
-            <MemoryGame />
+            <RockPaperScissors />
         </motion.div>
       </motion.div>
     </section>
