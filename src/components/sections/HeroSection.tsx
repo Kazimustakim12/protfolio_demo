@@ -27,7 +27,11 @@ export function HeroSection() {
   };
 
   return (
-    <section className="flex-1 flex flex-col justify-center container mx-auto px-4 sm:px-6 lg:px-8 min-h-[80vh] py-20">
+    <section className="relative flex-1 flex flex-col justify-center container mx-auto px-4 sm:px-6 lg:px-8 min-h-[80vh] py-20 overflow-hidden">
+        <div className="absolute inset-0 -z-10 h-full w-full bg-background bg-[linear-gradient(to_right,#8080800a_1px,transparent_1px),linear-gradient(to_bottom,#8080800a_1px,transparent_1px)] bg-[size:14px_24px]"/>
+        <div className="absolute left-1/2 top-0 -z-10 h-32 w-48 -translate-x-1/2 rounded-full bg-secondary/50 blur-3xl" />
+
+
       <motion.div
         variants={containerVariants}
         initial="hidden"

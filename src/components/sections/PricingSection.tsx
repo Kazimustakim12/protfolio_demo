@@ -43,7 +43,7 @@ export function PricingSection() {
           <motion.div key={plan.id} variants={cardVariants}>
             <Card className={cn(
               "flex flex-col h-full", 
-              plan.isFeatured && "border-2 border-accent shadow-accent/20 shadow-2xl"
+              plan.isFeatured && "border-2 border-accent shadow-accent/20 shadow-2xl bg-gradient-to-br from-card to-secondary/10"
             )}>
               <CardHeader className="text-center">
                 {plan.isFeatured && (

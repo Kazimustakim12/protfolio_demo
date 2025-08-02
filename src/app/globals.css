@@ -72,6 +72,10 @@
   }
   body {
     @apply bg-background text-foreground;
+    background-image: 
+      radial-gradient(ellipse at top, hsl(var(--background)), transparent),
+      radial-gradient(ellipse at bottom, hsl(var(--secondary) / 0.2), transparent);
+    background-color: hsl(222 47% 8%);
   }
   
   html {
