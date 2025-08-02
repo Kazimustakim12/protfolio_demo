@@ -56,3 +56,9 @@ export type Testimonial = {
     metricValue?: string;
     metricLabel?: string;
 };
+
+export type FaqItem = {
+    id: string;
+    question: string;
+    answer: string;
+};

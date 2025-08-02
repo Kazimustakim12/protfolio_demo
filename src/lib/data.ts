@@ -1,4 +1,4 @@
-import type { Project, Skill, SocialLinkItem, PricingPlan, Service, Stat, Testimonial } from '@/types';
+import type { Project, Skill, SocialLinkItem, PricingPlan, Service, Stat, Testimonial, FaqItem } from '@/types';
 import { Github, Linkedin, Twitter } from 'lucide-react';
 
 export const socialLinks: SocialLinkItem[] = [
@@ -222,5 +222,38 @@ export const testimonialsData: Testimonial[] = [
         title: 'Small Business Owner',
         avatarUrl: 'https://placehold.co/96x96.png',
         avatarHint: 'woman portrait casual',
+    },
+];
+
+export const faqData: FaqItem[] = [
+    {
+        id: 'faq-1',
+        question: 'What services do you offer?',
+        answer: 'I offer a range of services including UI/UX design, graphic design, web design, and branding. My goal is to provide a complete solution for your digital presence.',
+    },
+    {
+        id: 'faq-2',
+        question: 'How does the design process work?',
+        answer: 'My process is collaborative and iterative. We start with a discovery phase to understand your needs, followed by wireframing, prototyping, design, and development. You\'ll be involved at every stage to ensure the final product meets your expectations.',
+    },
+    {
+        id: 'faq-3',
+        question: 'How long does a project usually take?',
+        answer: 'The timeline for a project depends on its scope and complexity. A simple landing page might take a couple of weeks, while a full-featured web application could take several months. I provide a detailed timeline after our initial consultation.',
+    },
+    {
+        id: 'faq-4',
+        question: 'What do I need to provide before starting a project?',
+        answer: 'To get started, I\'ll need a clear brief outlining your goals, target audience, and any specific features you require. Any existing brand assets, such as logos or color palettes, are also helpful.',
+    },
+    {
+        id: 'faq-5',
+        question: 'Do you offer revisions?',
+        answer: 'Yes, all of my pricing plans include a set number of revision rounds. I believe in working together to get the design just right, and your feedback is a crucial part of the process.',
+    },
+    {
+        id: 'faq-6',
+        question: 'How do I get started?',
+        answer: 'The first step is to get in touch! You can use the contact form on this site to send me a message. We can then schedule a free consultation to discuss your project in detail.',
     },
 ];
