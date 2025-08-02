@@ -1,4 +1,4 @@
-import type { Project, Skill, SocialLinkItem, PricingPlan, Service } from '@/types';
+import type { Project, Skill, SocialLinkItem, PricingPlan, Service, Stat } from '@/types';
 import { Github, Linkedin, Twitter } from 'lucide-react';
 
 export const socialLinks: SocialLinkItem[] = [
@@ -152,4 +152,10 @@ export const servicesData: Service[] = [
     imageUrl: 'https://placehold.co/400x250.png',
     imageHint: 'branding mood board',
   },
+];
+
+export const aboutStats: Stat[] = [
+    { value: 12, text: '', label: 'Years of Experience' },
+    { value: 270, text: '', label: 'Completed Projects' },
+    { value: 50, text: '+', label: 'Clients on Worldwide' },
 ];

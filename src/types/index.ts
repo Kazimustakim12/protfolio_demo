@@ -38,3 +38,9 @@ export type PricingPlan = {
   features: string[];
   isFeatured: boolean;
 };
+
+export type Stat = {
+    value: number;
+    text?: string;
+    label: string;
+}

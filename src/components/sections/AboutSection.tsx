@@ -1,8 +1,11 @@
 "use client";
 
 import { motion } from 'framer-motion';
-import { skillsData } from '@/lib/data';
+import { aboutStats, socialLinks } from '@/lib/data';
 import Image from 'next/image';
+import { AnimatedCounter } from '@/components/ui/animated-counter';
+import Link from 'next/link';
+import { Button } from '../ui/button';
 
 const sectionVariants = {
   hidden: { opacity: 0, y: 50 },
@@ -21,51 +24,75 @@ export function AboutSection() {
   return (
     <motion.section 
       id="about" 
-      className="section-container"
+      className="section-container bg-card py-24 sm:py-32"
       variants={sectionVariants}
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true, amount: 0.2 }}
     >
-      <h2 className="section-heading mb-12 text-center">
-        <span className="text-accent font-sans text-xl font-medium">01.</span> About Me
-      </h2>
-      <div className="grid md:grid-cols-5 gap-12 items-start">
-        <div className="md:col-span-3">
-          <motion.div 
-            className="space-y-4 text-muted-foreground text-lg leading-relaxed"
-            variants={sectionVariants}
-            custom={1}
-          >
-            <p>
-              Hello! I'm Mustakim, a developer with a deep-seated passion for crafting beautiful, functional, and user-centric digital experiences. My journey into web development started with a simple "Hello, World!" and has since blossomed into a career where I get to build amazing things for the web.
-            </p>
-            <p>
-              I specialize in front-end development, but I'm comfortable working across the full stack. My philosophy is that good design is as much about how it works as how it looks. I thrive on turning complex problems into simple, elegant solutions.
-            </p>
-            <p>
-              When I'm not coding, you'll find me exploring the latest trends in technology, contributing to open-source projects, or enjoying a good cup of coffee.
-            </p>
-          </motion.div>
-        </div>
-        <div className="md:col-span-2">
-            <motion.div 
-              className="space-y-4"
-              variants={sectionVariants}
-              custom={2}
-            >
-                <p className="text-lg font-semibold text-foreground">Here are a few technologies I've been working with recently:</p>
-                <ul className="grid grid-cols-2 gap-x-4 gap-y-2 text-muted-foreground">
-                    {skillsData.map((skill) => (
-                    <li key={skill.name} className="flex items-center">
-                        <svg className="w-4 h-4 mr-2 text-accent" fill="currentColor" viewBox="0 0 20 20"><path fillRule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clipRule="evenodd"></path></svg>
-                        {skill.name}
-                    </li>
+        <div className="grid md:grid-cols-2 gap-16 items-center">
+            <div className="space-y-8">
+                <h2 className="section-heading">About Me</h2>
+                <p className="text-lg text-muted-foreground">
+                    Hi, I'm Mustakim — a creative developer and Framer developer passionate about crafting meaningful and impactful digital experiences.
+                </p>
+                
+                <div className="grid grid-cols-3 gap-8">
+                    {aboutStats.map((stat, index) => (
+                        <div key={index} className="text-center">
+                            <AnimatedCounter value={stat.value} text={stat.text} />
+                            <p className="text-muted-foreground mt-2">{stat.label}</p>
+                        </div>
                     ))}
-                </ul>
+                </div>
+
+                <div className="grid grid-cols-2 gap-8 text-sm">
+                    <div>
+                        <h4 className="font-semibold text-foreground mb-2">Call Today :</h4>
+                        <p className="text-muted-foreground hover:text-accent transition-colors"><a href="tel:+15551234567">+1 (555) 123-4567</a></p>
+                    </div>
+                    <div>
+                        <h4 className="font-semibold text-foreground mb-2">Email :</h4>
+                        <p className="text-muted-foreground hover:text-accent transition-colors"><a href="mailto:designer@example.com">designer@example.com</a></p>
+                    </div>
+                </div>
+
+                <div className="flex items-center gap-4">
+                    {socialLinks.map((link) => (
+                        <a
+                            key={link.name}
+                            href={link.href}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="text-muted-foreground hover:text-foreground transition-colors"
+                            aria-label={link.name}
+                        >
+                            <link.icon className="w-6 h-6" />
+                        </a>
+                    ))}
+                </div>
+
+                <Button asChild variant="outline" size="lg" className="border-accent text-accent hover:bg-accent hover:text-accent-foreground">
+                    <Link href="/my-story">My Story</Link>
+                </Button>
+            </div>
+            
+            <motion.div 
+                className="relative w-full h-[500px] rounded-2xl overflow-hidden"
+                initial={{ rotate: 5, scale: 0.9 }}
+                whileInView={{ rotate: 0, scale: 1 }}
+                transition={{ type: 'spring', stiffness: 100, damping: 20 }}
+                viewport={{ once: true }}
+            >
+                <Image
+                    src="https://placehold.co/600x800.png"
+                    alt="Mustakim Kazi Portrait"
+                    fill
+                    className="object-cover"
+                    data-ai-hint="man portrait professional"
+                />
             </motion.div>
         </div>
-      </div>
     </motion.section>
   );
 }
