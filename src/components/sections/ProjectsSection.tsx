@@ -11,45 +11,39 @@ import { useRef } from 'react';
 const CARD_OFFSET = 10;
 const SCALE_FACTOR = 0.06;
 
-const ProjectCard = ({ project, index, range, progress }: { 
+const ProjectCard = ({ project, index, range, progress, targetScale }: { 
     project: typeof projectsData[0], 
     index: number,
     range: [number, number],
-    progress: any 
+    progress: any,
+    targetScale: number,
 }) => {
-    const scale = useTransform(progress, range, [1 - index * SCALE_FACTOR, 1 - (index - 1) * SCALE_FACTOR]);
-    const translateY = useTransform(progress, range, [-index * CARD_OFFSET, 100]);
-    const rotate = useTransform(progress, range, [0, -5]);
-    
-    if(index === 0) {
-        return (
-            <motion.div 
-                className="group sticky top-32 w-full max-w-4xl h-[60vh] min-h-[500px] rounded-3xl overflow-hidden"
-                style={{
-                    zIndex: projectsData.length - index
-                }}
-            >
-                <CardContent project={project} />
-            </motion.div>
-        )
-    }
+    const container = useRef<HTMLDivElement>(null);
+    const { scrollYProgress } = useScroll({
+        target: container,
+        offset: ['start end', 'start start']
+    })
+
+    const imageScale = useTransform(scrollYProgress, [0, 1], [2, 1])
+    const scale = useTransform(progress, range, [index * SCALE_FACTOR + 1, targetScale]);
 
     return (
-        <motion.div 
-            className="group sticky top-32 w-full max-w-4xl h-[60vh] min-h-[500px] rounded-3xl overflow-hidden"
-            style={{ 
-                scale,
-                translateY,
-                rotate,
-                zIndex: projectsData.length - index
-            }}
-        >
-            <CardContent project={project} />
-        </motion.div>
+        <div ref={container} className="h-[100vh] sticky top-0 flex items-center justify-center">
+            <motion.div 
+                className="group relative w-full max-w-4xl h-[60vh] min-h-[500px] rounded-3xl overflow-hidden"
+                style={{
+                    scale,
+                    top: `calc(-5vh + ${index * 25}px)`
+                }}
+            >
+                <CardContent project={project} imageScale={imageScale} />
+            </motion.div>
+        </div>
     )
 }
 
-const CardContent = ({ project }: { project: typeof projectsData[0] }) => (
+const CardContent = ({ project, imageScale }: { project: typeof projectsData[0], imageScale: any }) => (
+    <motion.div className="w-full h-full" style={{scale: imageScale}}>
     <Link href={project.liveDemoUrl || '#'} target='_blank' className="block w-full h-full">
         <Image
             src={project.imageUrl}
@@ -78,6 +72,7 @@ const CardContent = ({ project }: { project: typeof projectsData[0] }) => (
             </div>
         </div>
     </Link>
+    </motion.div>
 )
 
 export function ProjectsSection() {
@@ -96,14 +91,11 @@ export function ProjectsSection() {
         </p>
       </div>
 
-      <div ref={ref} className="relative h-[250vh]">
-        <div className="sticky top-32 flex flex-col items-center">
-            {projectsData.map((project, index) => {
-                const start = index / projectsData.length;
-                const end = start + (1 / projectsData.length);
-                return <ProjectCard key={project.id} project={project} index={index} range={[start, end]} progress={scrollYProgress}/>
-            })}
-        </div>
+      <div ref={ref} className="relative">
+        {projectsData.map((project, index) => {
+            const targetScale = 1 - ( (projectsData.length - index) * 0.05);
+            return <ProjectCard key={project.id} project={project} index={index} progress={scrollYProgress} range={[index * .25, 1]} targetScale={targetScale}/>
+        })}
       </div>
     </section>
   );
