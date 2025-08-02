@@ -7,6 +7,7 @@ import { Badge } from '@/components/ui/badge';
 import { ArrowUpRight } from 'lucide-react';
 import Link from 'next/link';
 import { useRef } from 'react';
+import { BackgroundGradient } from '../layout/BackgroundGradient';
 
 const CARD_OFFSET = 10;
 const SCALE_FACTOR = 0.06;
@@ -83,20 +84,22 @@ export function ProjectsSection() {
     });
 
   return (
-    <section id="work" className="section-container relative">
-      <div className="text-center mb-16">
-        <h2 className="section-heading">Featured Projects</h2>
-        <p className="max-w-2xl mx-auto mt-4 text-lg text-muted-foreground">
-          These selected projects reflect my passion for blending strategy with creativity — solving real problems through thoughtful design and impactful storytelling.
-        </p>
-      </div>
+    <BackgroundGradient>
+        <section id="work" className="section-container relative">
+        <div className="text-center mb-16">
+            <h2 className="section-heading">Featured Projects</h2>
+            <p className="max-w-2xl mx-auto mt-4 text-lg text-muted-foreground">
+            These selected projects reflect my passion for blending strategy with creativity — solving real problems through thoughtful design and impactful storytelling.
+            </p>
+        </div>
 
-      <div ref={ref} className="relative">
-        {projectsData.map((project, index) => {
-            const targetScale = 1 - ( (projectsData.length - index) * 0.05);
-            return <ProjectCard key={project.id} project={project} index={index} progress={scrollYProgress} range={[index * .25, 1]} targetScale={targetScale}/>
-        })}
-      </div>
-    </section>
+        <div ref={ref} className="relative">
+            {projectsData.map((project, index) => {
+                const targetScale = 1 - ( (projectsData.length - index) * 0.05);
+                return <ProjectCard key={project.id} project={project} index={index} progress={scrollYProgress} range={[index * .25, 1]} targetScale={targetScale}/>
+            })}
+        </div>
+        </section>
+    </BackgroundGradient>
   );
 }
