@@ -18,6 +18,16 @@ const itemVariants = {
   visible: { opacity: 1, y: 0, transition: { type: "spring", stiffness: 100 } },
 };
 
+const waveAnimation = {
+  rotate: [0, 14, -8, 14, -4, 10, 0, 0],
+  transition: {
+    duration: 2.5,
+    ease: "easeInOut",
+    repeat: Infinity,
+    repeatDelay: 1,
+  },
+};
+
 
 export function HeroSection() {
 
@@ -69,7 +79,12 @@ export function HeroSection() {
                   className="absolute -bottom-6 -right-6 md:-bottom-8 md:-right-8"
                 >
                   <div className="bg-green-400/80 backdrop-blur-sm text-black font-semibold rounded-full w-24 h-24 flex items-center justify-center text-4xl shadow-lg">
-                    👋
+                    <motion.div
+                      animate={waveAnimation}
+                      style={{ originX: "70%", originY: "70%" }}
+                    >
+                      👋
+                    </motion.div>
                   </div>
                 </motion.div>
               </div>

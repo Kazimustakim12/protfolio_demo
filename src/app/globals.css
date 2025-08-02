@@ -69,6 +69,7 @@
 @layer base {
   * {
     border-color: hsl(var(--border));
+    cursor: none;
   }
   body {
     background-color: hsl(var(--background));
