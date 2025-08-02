@@ -11,7 +11,7 @@ export function Navbar() {
     { name: 'Home', href: '#' },
     { name: 'About', href: '#about' },
     { name: 'Projects', href: '#work' },
-    { name: 'Blog', href: '#' },
+    { name: 'Pricing', href: '#pricing' },
   ];
   
   const { scrollY } = useScroll();
