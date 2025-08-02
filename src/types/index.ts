@@ -23,34 +23,3 @@ export type NavLinkItem = {
   href: string;
   icon?: LucideIcon | ForwardRefExoticComponent<Omit<LucideProps, "ref"> & RefAttributes<SVGSVGElement>>;
 };
-
-export type SocialLinkItem = {
-  name: string;
-  url: string;
-  icon: LucideIcon | ForwardRefExoticComponent<Omit<LucideProps, "ref"> & RefAttributes<SVGSVGElement>>;
-};
-
-export type ServiceItem = {
-  id: string;
-  title: string;
-  icon: LucideIcon | ForwardRefExoticComponent<Omit<LucideProps, "ref"> & RefAttributes<SVGSVGElement>>;
-  color?: string;
-};
-
-export type EducationItem = {
-  id: string;
-  degreeOrCert: string;
-  institution: string;
-  period: string;
-};
-
-export type BlogPost = {
-  id: string;
-  slug: string;
-  title: string;
-  excerpt: string;
-  content: string; // Will contain HTML content
-  imageUrl: string;
-  date: string;
-  category: string;
-};
