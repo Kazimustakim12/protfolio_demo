@@ -4,40 +4,8 @@
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 224 71% 4%; /* Dark Slate - #0f172a */
-
-    --card: 0 0% 100%;
-    --card-foreground: 224 71% 4%;
-
-    --popover: 0 0% 100%;
-    --popover-foreground: 224 71% 4%;
-
-    --primary: 224 71% 4%;
-    --primary-foreground: 60 93% 98%;
-
-    --secondary: 240 5% 96%;
-    --secondary-foreground: 224 71% 4%;
-
-    --muted: 240 5% 90%;
-    --muted-foreground: 240 4% 46%;
-
-    --accent: 240 5% 96%;
-    --accent-foreground: 224 71% 4%;
-    
-    --destructive: 0 84% 60%;
-    --destructive-foreground: 0 0% 98%;
-
-    --border: 240 6% 90%;
-    --input: 240 6% 90%;
-    --ring: 224 71% 4%;
-
-    --radius: 0.5rem;
-  }
-
-  .dark {
-    --background: 224 71% 4%; /* Dark Slate - #0f172a */
-    --foreground: 0 0% 98%;
+    --background: 224 71% 4%; /* #0f172a */
+    --foreground: 0 0% 98%; /* #fafafa */
 
     --card: 224 71% 4%;
     --card-foreground: 0 0% 98%;
@@ -45,24 +13,26 @@
     --popover: 224 71% 4%;
     --popover-foreground: 0 0% 98%;
 
-    --primary: 0 0% 98%;
-    --primary-foreground: 224 71% 4%;
+    --primary: 210 40% 98%; /* #f8fafc - For primary text */
+    --primary-foreground: 222 47% 11%; /* #111827 - For text on primary bg */
 
-    --secondary: 240 4% 16%;
-    --secondary-foreground: 0 0% 98%;
+    --secondary: 40 84% 53%; /* gold/yellow accent */
+    --secondary-foreground: 224 71% 4%;
 
     --muted: 240 4% 16%;
     --muted-foreground: 240 4% 65%;
 
     --accent: 240 4% 16%;
     --accent-foreground: 0 0% 98%;
-
-    --destructive: 0 63% 31%;
+    
+    --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 98%;
 
     --border: 240 4% 16%;
     --input: 240 4% 16%;
-    --ring: 0 0% 98%;
+    --ring: 240 5% 65%;
+
+    --radius: 0.5rem;
   }
 }
 
@@ -72,7 +42,23 @@
   }
   body {
     @apply bg-background text-foreground;
+    position: relative;
   }
+
+  body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 800"><g fill-opacity="0.2"><circle fill="black" cx="400" cy="400" r="400"/><path fill-rule="evenodd" d="M0 0h800v800H0V0zm400 400c0 220.914-179.086 400-400 400V400h400z" fill="rgba(255,255,255,0.02)"/></g></svg>');
+    background-size: 800px 800px;
+    opacity: 0.2;
+    z-index: -1;
+    pointer-events: none;
+  }
+  
   html {
     scroll-behavior: smooth;
   }

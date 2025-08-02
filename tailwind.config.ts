@@ -21,6 +21,7 @@ const config = {
       extend: {
         fontFamily: {
           sans: ["var(--font-inter)", ...fontFamily.sans],
+          playfair: ["var(--font-playfair)", ...fontFamily.serif],
         },
         colors: {
           border: "hsl(var(--border))",

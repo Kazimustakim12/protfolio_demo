@@ -1,50 +1,35 @@
 "use client";
 
-import { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { motion } from 'framer-motion';
-import { Button } from '@/components/ui/button';
-import { navLinks } from '@/lib/data';
+import { Code2 } from 'lucide-react';
 
 export function Navbar() {
-  const [isScrolled, setIsScrolled] = useState(false);
 
-  useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20);
-    };
-    window.addEventListener('scroll', handleScroll);
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
-  }, []);
+  const navLinks = [
+    { name: 'Work', href: '#' },
+    { name: 'About', href: '#' },
+    { name: 'Contact', href: '#' },
+  ];
 
   return (
     <header className="sticky top-0 z-50 transition-all duration-300">
-      <motion.div
-        className={`transition-all duration-300 ${
-          isScrolled ? 'py-4 bg-background/80 backdrop-blur-lg' : 'py-6'
-        }`}
+      <div
+        className={'transition-all duration-300 py-6'}
       >
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center">
-          <Link href="/" className="text-lg font-bold">
-            KAZI
+          <Link href="/" className="flex items-center gap-2 text-lg font-bold">
+            <Code2 className="w-6 h-6 text-secondary" />
+            <span>KAZI</span>
           </Link>
-          <nav className="hidden md:flex items-center space-x-6">
-            {navLinks.map((link, index) => (
-              <Button key={link.href} variant="ghost" asChild>
-                <Link href={link.href}>
-                  <span className="text-primary mr-2">0{index + 1}.</span>
+          <nav className="hidden md:flex items-center space-x-8">
+            {navLinks.map((link) => (
+              <Link key={link.href} href={link.href} className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">
                   {link.name}
-                </Link>
-              </Button>
+              </Link>
             ))}
           </nav>
-          <Button asChild>
-            <a href="mailto:contact@example.com">Contact</a>
-          </Button>
         </div>
-      </motion.div>
+      </div>
     </header>
   );
 }
