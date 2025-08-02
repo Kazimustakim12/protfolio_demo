@@ -19,6 +19,7 @@ export type Service = {
   id: string;
   title: string;
   description: string;
+  features: string[];
   imageUrl: string;
   imageHint?: string;
 };

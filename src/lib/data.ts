@@ -104,6 +104,12 @@ export const servicesData: Service[] = [
     id: 'service-1',
     title: 'UI/UX Design',
     description: 'Crafting intuitive and beautiful user interfaces that are a joy to use.',
+    features: [
+        'User Persona & Journey Mapping',
+        'Wireframing & Prototyping',
+        'Usability Testing & Feedback',
+        'Interaction Design & Micro-animations'
+    ],
     imageUrl: 'https://placehold.co/400x250.png',
     imageHint: 'ui ux design',
   },
@@ -111,6 +117,12 @@ export const servicesData: Service[] = [
     id: 'service-2',
     title: 'Graphic Design',
     description: 'Creating stunning visuals that communicate your brand\'s message effectively.',
+    features: [
+        'Logo & Brand Identity Design',
+        'Marketing & Advertising Materials',
+        'Social Media Graphics',
+        'Illustration & Iconography'
+    ],
     imageUrl: 'https://placehold.co/400x250.png',
     imageHint: 'graphic design abstract',
   },
@@ -118,6 +130,12 @@ export const servicesData: Service[] = [
     id: 'service-3',
     title: 'Web Design',
     description: 'Designing and building responsive, modern websites that look great on all devices.',
+    features: [
+        'Responsive Web Design',
+        'E-commerce Solutions',
+        'Custom CMS Development',
+        'Website Maintenance & Support'
+    ],
     imageUrl: 'https://placehold.co/400x250.png',
     imageHint: 'web design code',
   },
@@ -125,6 +143,12 @@ export const servicesData: Service[] = [
     id: 'service-4',
     title: 'Branding',
     description: 'Developing a strong and consistent brand identity that resonates with your audience.',
+    features: [
+        'Brand Strategy & Development',
+        'Visual Style Guide Creation',
+        'Typography & Color Scheme Selection',
+        'Brand Storytelling & Messaging'
+    ],
     imageUrl: 'https://placehold.co/400x250.png',
     imageHint: 'branding mood board',
   },

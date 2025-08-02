@@ -4,7 +4,7 @@ import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { servicesData } from '@/lib/data';
 import Image from 'next/image';
-import { ChevronUp } from 'lucide-react';
+import { Check, ChevronUp } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
 const sectionVariants = {
@@ -23,6 +23,15 @@ const sectionVariants = {
 const itemVariants = {
   hidden: { opacity: 0, x: -50 },
   visible: { opacity: 1, x: 0, transition: { duration: 0.5 } },
+};
+
+const accordionContentVariants = {
+    collapsed: { opacity: 0, height: 0 },
+    open: {
+      opacity: 1,
+      height: "auto",
+      transition: { duration: 0.4, ease: [0.04, 0.62, 0.23, 0.98] }
+    }
 };
 
 export function ServicesSection() {
@@ -47,17 +56,17 @@ export function ServicesSection() {
           </motion.div>
 
           <div 
-            className="relative space-y-2"
+            className="relative"
             onMouseLeave={() => setActiveIndex(null)}
           >
             {servicesData.map((service, index) => (
               <div
                 key={service.id}
                 onMouseEnter={() => setActiveIndex(index)}
-                className="border-b border-white/10 last:border-b-0"
+                className="border-b border-white/10 last:border-b-0 cursor-pointer"
               >
                 <motion.div variants={itemVariants}>
-                  <div className="flex justify-between items-center py-6 cursor-pointer">
+                  <div className="flex justify-between items-center py-6">
                     <span className="text-xl font-semibold">
                       <span className="text-accent text-3xl font-serif mr-4">0{index + 1}.</span>
                       <span className={cn(activeIndex === index && "text-accent")}>{service.title}</span>
@@ -65,19 +74,40 @@ export function ServicesSection() {
                     <ChevronUp
                       className={cn(
                         "transition-transform duration-300",
-                        activeIndex === index ? "rotate-0" : "rotate-180"
+                        activeIndex === index ? "rotate-0 text-accent" : "rotate-180"
                       )}
                     />
                   </div>
                 </motion.div>
+                <AnimatePresence initial={false}>
+                  {activeIndex === index && (
+                    <motion.div
+                      key="content"
+                      initial="collapsed"
+                      animate="open"
+                      exit="collapsed"
+                      variants={accordionContentVariants}
+                      className="overflow-hidden"
+                    >
+                      <ul className="pb-6 pl-12 space-y-3 text-muted-foreground">
+                        {service.features.map((feature, i) => (
+                          <li key={i} className="flex items-start">
+                            <Check className="w-5 h-5 text-accent mr-3 flex-shrink-0 mt-1" />
+                            <span>{feature}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
               </div>
             ))}
 
             <AnimatePresence>
                 {activeIndex !== null && servicesData[activeIndex] && (
                     <motion.div
-                    initial={{ opacity: 0, x: 100, y: (activeIndex * 89) + 24, scale: 0.9 }}
-                    animate={{ opacity: 1, x: 100, y: (activeIndex * 89) + 24, scale: 1 }}
+                    initial={{ opacity: 0, x: 100, y: (activeIndex * (activeIndex === 0 ? 90 : 89)) + 24, scale: 0.9 }}
+                    animate={{ opacity: 1, x: 100, y: (activeIndex * (activeIndex === 0 ? 90 : 89)) + 24, scale: 1 }}
                     exit={{ opacity: 0, scale: 0.9 }}
                     transition={{ type: 'spring', stiffness: 200, damping: 20 }}
                     className="absolute top-0 left-1/2 w-64 h-40 pointer-events-none"
