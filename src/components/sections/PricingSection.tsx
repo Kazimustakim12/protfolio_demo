@@ -68,7 +68,10 @@ export function PricingSection() {
               </CardContent>
               <CardFooter>
                 <Button 
-                  className={cn("w-full text-lg py-6", !plan.isFeatured && 'bg-primary')}
+                  className={cn(
+                    "w-full text-lg py-6", 
+                    !plan.isFeatured && "bg-primary text-primary-foreground"
+                  )}
                   variant={plan.isFeatured ? 'default' : 'secondary'}
                 >
                   Get Started
