@@ -24,7 +24,6 @@ import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '
 import { useToast } from '@/hooks/use-toast';
 import { useEffect } from 'react';
 import { servicesData } from '@/lib/data';
-import { BackgroundGradient } from '../layout/BackgroundGradient';
 
 const sectionVariants = {
   hidden: { opacity: 0, y: 50 },
@@ -86,123 +85,121 @@ export function ContactSection() {
 
 
   return (
-    <BackgroundGradient>
-        <motion.section
-        id="contact"
-        className="section-container"
-        variants={sectionVariants}
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, amount: 0.1 }}
+    <motion.section
+    id="contact"
+    className="section-container"
+    variants={sectionVariants}
+    initial="hidden"
+    whileInView="visible"
+    viewport={{ once: true, amount: 0.1 }}
+    >
+    <div className="grid md:grid-cols-2 gap-16 items-center">
+        <motion.div variants={itemVariants} className="relative hidden md:block">
+        <div className="relative w-full h-[600px] rounded-3xl overflow-hidden">
+            <Image
+            src="https://placehold.co/600x800.png"
+            alt="Mustakim Kazi"
+            fill
+            className="object-cover"
+            data-ai-hint="man portrait professional"
+            />
+        </div>
+        <motion.div
+            initial={{ scale: 0, rotate: -45 }}
+            whileInView={{ scale: 1, rotate: 0 }}
+            transition={{ type: 'spring', stiffness: 260, damping: 20, delay: 0.3 }}
+            viewport={{ once: true }}
+            className="absolute -bottom-12 -left-12 w-32 h-32 bg-highlight rounded-full flex items-center justify-center shadow-2xl"
         >
-        <div className="grid md:grid-cols-2 gap-16 items-center">
-            <motion.div variants={itemVariants} className="relative hidden md:block">
-            <div className="relative w-full h-[600px] rounded-3xl overflow-hidden">
-                <Image
-                src="https://placehold.co/600x800.png"
-                alt="Mustakim Kazi"
-                fill
-                className="object-cover"
-                data-ai-hint="man portrait professional"
+            <Hand className="w-16 h-16 text-black" fill="black" />
+        </motion.div>
+        </motion.div>
+
+        <motion.div variants={itemVariants}>
+        <h2 className="text-5xl font-bold font-serif mb-4">LET'S WORK TOGETHER</h2>
+        <p className="text-lg text-muted-foreground mb-10 text-balance">
+            Let's build something impactful together—whether it's your brand, your website, or your next big idea.
+        </p>
+
+        <Form {...form}>
+            <form action={formAction} className="space-y-8">
+            <div className="grid sm:grid-cols-2 gap-8">
+                <FormField
+                control={form.control}
+                name="name"
+                render={({ field }) => (
+                    <FormItem>
+                    <FormLabel className="text-accent">Name</FormLabel>
+                    <FormControl>
+                        <Input placeholder="John Smith" {...field} />
+                    </FormControl>
+                    <FormMessage />
+                    </FormItem>
+                )}
+                />
+                <FormField
+                control={form.control}
+                name="email"
+                render={({ field }) => (
+                    <FormItem>
+                    <FormLabel className="text-accent">Email</FormLabel>
+                    <FormControl>
+                        <Input placeholder="johnsmith@gmail.com" {...field} />
+                    </FormControl>
+                    <FormMessage />
+                    </FormItem>
+                )}
                 />
             </div>
-            <motion.div
-                initial={{ scale: 0, rotate: -45 }}
-                whileInView={{ scale: 1, rotate: 0 }}
-                transition={{ type: 'spring', stiffness: 260, damping: 20, delay: 0.3 }}
-                viewport={{ once: true }}
-                className="absolute -bottom-12 -left-12 w-32 h-32 bg-highlight rounded-full flex items-center justify-center shadow-2xl"
-            >
-                <Hand className="w-16 h-16 text-black" fill="black" />
-            </motion.div>
-            </motion.div>
 
-            <motion.div variants={itemVariants}>
-            <h2 className="text-5xl font-bold font-serif mb-4">LET'S WORK TOGETHER</h2>
-            <p className="text-lg text-muted-foreground mb-10 text-balance">
-                Let's build something impactful together—whether it's your brand, your website, or your next big idea.
-            </p>
-
-            <Form {...form}>
-                <form action={formAction} className="space-y-8">
-                <div className="grid sm:grid-cols-2 gap-8">
-                    <FormField
-                    control={form.control}
-                    name="name"
-                    render={({ field }) => (
-                        <FormItem>
-                        <FormLabel className="text-accent">Name</FormLabel>
-                        <FormControl>
-                            <Input placeholder="John Smith" {...field} />
-                        </FormControl>
-                        <FormMessage />
-                        </FormItem>
-                    )}
-                    />
-                    <FormField
-                    control={form.control}
-                    name="email"
-                    render={({ field }) => (
-                        <FormItem>
-                        <FormLabel className="text-accent">Email</FormLabel>
-                        <FormControl>
-                            <Input placeholder="johnsmith@gmail.com" {...field} />
-                        </FormControl>
-                        <FormMessage />
-                        </FormItem>
-                    )}
-                    />
-                </div>
-
-                <FormField
-                    control={form.control}
-                    name="service"
-                    render={({ field }) => (
-                        <FormItem>
-                        <FormLabel className="text-accent">Service Needed?</FormLabel>
-                        <Select onValueChange={field.onChange} defaultValue={field.value}>
-                            <FormControl>
-                            <SelectTrigger>
-                                <SelectValue placeholder="Select..." />
-                            </SelectTrigger>
-                            </FormControl>
-                            <SelectContent>
-                            {servicesData.map(service => (
-                                <SelectItem key={service.id} value={service.title}>
-                                {service.title}
-                                </SelectItem>
-                            ))}
-                            </SelectContent>
-                        </Select>
-                        <FormMessage />
-                        </FormItem>
-                    )}
-                    />
-
-                <FormField
-                    control={form.control}
-                    name="message"
-                    render={({ field }) => (
+            <FormField
+                control={form.control}
+                name="service"
+                render={({ field }) => (
                     <FormItem>
-                        <FormLabel className="text-accent">What Can I Help You With...</FormLabel>
+                    <FormLabel className="text-accent">Service Needed?</FormLabel>
+                    <Select onValueChange={field.onChange} defaultValue={field.value}>
                         <FormControl>
-                        <Textarea
-                            placeholder="Hello, I'd like to enquire about..."
-                            className="min-h-[150px]"
-                            {...field}
-                        />
+                        <SelectTrigger>
+                            <SelectValue placeholder="Select..." />
+                        </SelectTrigger>
                         </FormControl>
-                        <FormMessage />
+                        <SelectContent>
+                        {servicesData.map(service => (
+                            <SelectItem key={service.id} value={service.title}>
+                            {service.title}
+                            </SelectItem>
+                        ))}
+                        </SelectContent>
+                    </Select>
+                    <FormMessage />
                     </FormItem>
-                    )}
+                )}
                 />
-                
-                <SubmitButton />
-                </form>
-            </Form>
-            </motion.div>
-        </div>
-        </motion.section>
-    </BackgroundGradient>
+
+            <FormField
+                control={form.control}
+                name="message"
+                render={({ field }) => (
+                <FormItem>
+                    <FormLabel className="text-accent">What Can I Help You With...</FormLabel>
+                    <FormControl>
+                    <Textarea
+                        placeholder="Hello, I'd like to enquire about..."
+                        className="min-h-[150px]"
+                        {...field}
+                    />
+                    </FormControl>
+                    <FormMessage />
+                </FormItem>
+                )}
+            />
+            
+            <SubmitButton />
+            </form>
+        </Form>
+        </motion.div>
+    </div>
+    </motion.section>
   );
 }

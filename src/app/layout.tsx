@@ -7,6 +7,7 @@ import { CustomCursor } from '@/components/layout/CustomCursor';
 import { SmoothScroll } from '@/components/layout/SmoothScroll';
 import { ThemeProvider } from '@/components/providers/ThemeProvider';
 import { ThemeToggle } from '@/components/layout/ThemeToggle';
+import { BackgroundGradient } from '@/components/layout/BackgroundGradient';
 
 export const metadata: Metadata = {
   title: 'Mustakim Kazi - Creative Developer',
@@ -35,8 +36,9 @@ export default function RootLayout({
         >
           <SmoothScroll>
             <CustomCursor />
+            <BackgroundGradient />
             <Navbar />
-            <main className="flex-1 flex flex-col">
+            <main className="flex-1 flex flex-col relative z-10">
               {children}
             </main>
             <Footer />
