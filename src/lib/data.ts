@@ -1,4 +1,4 @@
-import type { Project, Skill, SocialLinkItem, PricingPlan, Service, Stat } from '@/types';
+import type { Project, Skill, SocialLinkItem, PricingPlan, Service, Stat, Testimonial } from '@/types';
 import { Github, Linkedin, Twitter } from 'lucide-react';
 
 export const socialLinks: SocialLinkItem[] = [
@@ -168,4 +168,59 @@ export const aboutStats: Stat[] = [
     { value: 4, text: '', label: 'Years of Experience' },
     { value: 7, text: '', label: 'Completed Projects' },
     { value: 15, text: '+', label: 'Clients on Worldwide' },
+];
+
+export const testimonialsData: Testimonial[] = [
+    {
+        id: 'testimonial-1',
+        type: 'testimonial',
+        content: 'Duncan truly understood my vision and turned it into impactful designs. The results went beyond my expectations!',
+        name: 'John Harris',
+        title: 'Marketing Director',
+        avatarUrl: 'https://placehold.co/96x96.png',
+        avatarHint: 'man portrait',
+    },
+    {
+        id: 'testimonial-2',
+        type: 'testimonial',
+        content: 'He took the time to understand our goals and delivered a design that resonated perfectly with our audience.',
+        name: 'Michael Lee',
+        title: 'Product Manager',
+        avatarUrl: 'https://placehold.co/96x96.png',
+        avatarHint: 'man portrait professional',
+    },
+    {
+        id: 'metric-2',
+        type: 'metric',
+        content: 'I\'ve worked with 50+ happy clients',
+        name: 'Satisfied Clients',
+        metricValue: '98%',
+        metricLabel: 'Satisfaction Rate',
+    },
+    {
+        id: 'metric-1',
+        type: 'metric',
+        content: 'My work helped clients grow their revenue by 200%',
+        name: 'Revenue Growth',
+        metricValue: '200%',
+        metricLabel: 'Growth',
+    },
+    {
+        id: 'testimonial-4',
+        type: 'testimonial',
+        content: 'His design skills are unmatched. He transformed my ideas into a high-performing, visually striking website.',
+        name: 'Sarah Johnson',
+        title: 'CEO',
+        avatarUrl: 'https://placehold.co/96x96.png',
+        avatarHint: 'woman portrait professional',
+    },
+    {
+        id: 'testimonial-5',
+        type: 'testimonial',
+        content: 'As a small business owner, I appreciated how stress-free Duncan made the process.',
+        name: 'Laura Bennett',
+        title: 'Small Business Owner',
+        avatarUrl: 'https://placehold.co/96x96.png',
+        avatarHint: 'woman portrait casual',
+    },
 ];

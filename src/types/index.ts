@@ -44,3 +44,15 @@ export type Stat = {
     text?: string;
     label: string;
 }
+
+export type Testimonial = {
+    id: string;
+    type: 'testimonial' | 'metric';
+    content: string;
+    name: string;
+    title?: string;
+    avatarUrl?: string;
+    avatarHint?: string;
+    metricValue?: string;
+    metricLabel?: string;
+};
