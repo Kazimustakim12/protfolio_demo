@@ -68,8 +68,8 @@ export function HeroSection() {
                   transition={{ delay: 1, type: 'spring', stiffness: 200 }}
                   className="absolute -bottom-6 -right-6 md:-bottom-8 md:-right-8"
                 >
-                  <div className="bg-green-400/80 backdrop-blur-sm text-black font-semibold rounded-full w-24 h-24 flex items-center justify-center text-2xl shadow-lg">
-                    Hi
+                  <div className="bg-green-400/80 backdrop-blur-sm text-black font-semibold rounded-full w-24 h-24 flex items-center justify-center text-4xl shadow-lg">
+                    👋
                   </div>
                 </motion.div>
               </div>
