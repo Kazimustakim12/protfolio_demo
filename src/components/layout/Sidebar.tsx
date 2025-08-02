@@ -4,9 +4,8 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
-import { Button } from '@/components/ui/button';
-import { navLinks, socialLinks } from '@/lib/data'; // Assuming socialLinks will be added to data.ts
-import type { NavLinkItem, SocialLinkItem } from '@/types'; // Assuming types will be updated/created
+import { navLinks, socialLinks } from '@/lib/data';
+import type { NavLinkItem, SocialLinkItem } from '@/types';
 
 export function Sidebar() {
   const pathname = usePathname();
@@ -14,10 +13,12 @@ export function Sidebar() {
   return (
     <aside className="w-64 min-h-screen bg-sidebar-background text-sidebar-foreground flex flex-col p-6 border-r border-sidebar-border fixed top-0 left-0 h-full">
       <div className="mb-8 text-center">
-        <Avatar className="w-20 h-20 mx-auto mb-3 ring-2 ring-primary ring-offset-2 ring-offset-sidebar-background">
-          <AvatarImage src="https://placehold.co/100x100.png" alt="Nicole Harper" data-ai-hint="woman portrait" />
-          <AvatarFallback>NH</AvatarFallback>
-        </Avatar>
+        <Link href="/">
+          <Avatar className="w-20 h-20 mx-auto mb-3 ring-2 ring-primary ring-offset-2 ring-offset-sidebar-background cursor-pointer">
+            <AvatarImage src="https://placehold.co/100x100.png" alt="Nicole Harper" data-ai-hint="woman portrait" />
+            <AvatarFallback>NH</AvatarFallback>
+          </Avatar>
+        </Link>
         <h1 className="text-xl font-semibold">Nicole Harper</h1>
         <p className="text-sm text-muted-foreground">Creative Designer</p>
       </div>
@@ -25,7 +26,9 @@ export function Sidebar() {
       <nav className="flex-grow">
         <ul className="space-y-2">
           {navLinks.map((link: NavLinkItem) => {
-            const isActive = pathname === link.href || (link.href !== "/" && pathname.startsWith(link.href));
+            // Check if the current path starts with the link's href.
+            // Special case for '/' to only match exactly.
+            const isActive = link.href === '/' ? pathname === link.href : pathname.startsWith(link.href);
             const IconComponent = link.icon;
             return (
               <li key={link.name}>

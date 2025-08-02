@@ -18,33 +18,39 @@ export type Skill = {
   icon?: LucideIcon; 
 };
 
-// Updated NavLinkItem to include an optional icon
 export type NavLinkItem = {
   name: string;
   href: string;
-  icon?: LucideIcon | ForwardRefExoticComponent<Omit<LucideProps, "ref"> & RefAttributes<SVGSVGElement>>; // Allow for various Lucide icon types
+  icon?: LucideIcon | ForwardRefExoticComponent<Omit<LucideProps, "ref"> & RefAttributes<SVGSVGElement>>;
 };
 
-// New type for Social Links
 export type SocialLinkItem = {
   name: string;
   url: string;
   icon: LucideIcon | ForwardRefExoticComponent<Omit<LucideProps, "ref"> & RefAttributes<SVGSVGElement>>;
 };
 
-// New type for Service Items
 export type ServiceItem = {
   id: string;
   title: string;
-  // description: string; // Description seems to be omitted in the new design's cards
   icon: LucideIcon | ForwardRefExoticComponent<Omit<LucideProps, "ref"> & RefAttributes<SVGSVGElement>>;
-  color?: string; // Optional color for icon/background accents
+  color?: string;
 };
 
-// New type for Education Items
 export type EducationItem = {
   id: string;
   degreeOrCert: string;
   institution: string;
   period: string;
+};
+
+export type BlogPost = {
+  id: string;
+  slug: string;
+  title: string;
+  excerpt: string;
+  content: string; // Will contain HTML content
+  imageUrl: string;
+  date: string;
+  category: string;
 };
