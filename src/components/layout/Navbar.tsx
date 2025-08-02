@@ -5,7 +5,6 @@ import Image from 'next/image';
 import { motion, useMotionValueEvent, useScroll } from 'framer-motion';
 import { Button } from '@/components/ui/button';
 import { useState } from 'react';
-import { cn } from '@/lib/utils';
 
 export function Navbar() {
   const { scrollY } = useScroll();
