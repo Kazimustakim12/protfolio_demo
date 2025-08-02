@@ -22,7 +22,7 @@ export default function RootLayout({
         <link href="https://fonts.googleapis.com/css2?family=Antonio:wght@100..700&display=swap" rel="stylesheet" />
         <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
       </head>
-      <body className={`font-sans antialiased`}>
+      <body className={`font-sans antialiased grainy-texture`}>
         <Navbar />
         <main className="flex-1 flex flex-col">
           {children}
