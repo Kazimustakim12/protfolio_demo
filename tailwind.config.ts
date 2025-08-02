@@ -18,7 +18,8 @@ const config = {
       },
       extend: {
         fontFamily: {
-          sans: ["Antonio", "sans-serif"],
+          sans: ["Inter", "sans-serif"],
+          serif: ["Antonio", "sans-serif"],
         },
         colors: {
           border: "hsl(var(--border))",
