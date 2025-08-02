@@ -37,6 +37,7 @@ const accordionContentVariants = {
 
 export function ServicesSection() {
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
+  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
@@ -44,6 +45,9 @@ export function ServicesSection() {
     setMousePosition({ x: e.clientX - rect.left, y: e.clientY - rect.top });
   };
 
+  const handleItemClick = (index: number) => {
+    setActiveIndex(activeIndex === index ? null : index);
+  };
 
   return (
     <motion.section
@@ -66,12 +70,13 @@ export function ServicesSection() {
           <div 
             className="relative"
             onMouseMove={handleMouseMove}
-            onMouseLeave={() => setActiveIndex(null)}
           >
             {servicesData.map((service, index) => (
               <div
                 key={service.id}
-                onMouseEnter={() => setActiveIndex(index)}
+                onMouseEnter={() => setHoveredIndex(index)}
+                onMouseLeave={() => setHoveredIndex(null)}
+                onClick={() => handleItemClick(index)}
                 className="border-b border-white/10 last:border-b-0 cursor-pointer"
               >
                 <motion.div variants={itemVariants}>
@@ -113,7 +118,7 @@ export function ServicesSection() {
             ))}
 
             <AnimatePresence>
-                {activeIndex !== null && servicesData[activeIndex] && (
+                {hoveredIndex !== null && servicesData[hoveredIndex] && (
                     <motion.div
                     initial={{ opacity: 0, scale: 0.8 }}
                     animate={{ 
@@ -127,12 +132,12 @@ export function ServicesSection() {
                     className="absolute top-0 left-0 w-64 h-40 pointer-events-none z-10"
                     >
                         <Image
-                            src={servicesData[activeIndex].imageUrl}
-                            alt={servicesData[activeIndex].title}
+                            src={servicesData[hoveredIndex].imageUrl}
+                            alt={servicesData[hoveredIndex].title}
                             width={256}
                             height={160}
                             className="rounded-lg object-cover shadow-2xl"
-                            data-ai-hint={servicesData[activeIndex].imageHint}
+                            data-ai-hint={servicesData[hoveredIndex].imageHint}
                         />
                     </motion.div>
                 )}
