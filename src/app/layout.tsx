@@ -6,6 +6,7 @@ import { Footer } from '@/components/layout/Footer';
 import { CustomCursor } from '@/components/layout/CustomCursor';
 import { SmoothScroll } from '@/components/layout/SmoothScroll';
 import { ThemeProvider } from '@/components/providers/ThemeProvider';
+import { ThemeToggle } from '@/components/layout/ThemeToggle';
 
 export const metadata: Metadata = {
   title: 'Mustakim Kazi - Creative Developer',
@@ -40,6 +41,9 @@ export default function RootLayout({
             </main>
             <Footer />
             <Toaster />
+            <div className="fixed bottom-4 right-4 z-50">
+              <ThemeToggle />
+            </div>
           </SmoothScroll>
         </ThemeProvider>
       </body>

@@ -56,23 +56,23 @@ export function Navbar() {
           transition={{ duration: 0.2, delay: isShrunken ? 0 : 0.1 }}
           className="flex items-center gap-2"
         >
-          <Button variant="ghost" asChild>
-            <Link href="#" className="text-sm font-medium text-muted-foreground transition-colors hover:text-primary">
+          <Button variant="ghost" asChild className="hover:text-primary hover:bg-transparent">
+            <Link href="#" className="text-sm font-medium text-muted-foreground transition-colors">
               Home
             </Link>
           </Button>
-          <Button variant="ghost" asChild>
-            <Link href="#about" className="text-sm font-medium text-muted-foreground transition-colors hover:text-primary">
+          <Button variant="ghost" asChild className="hover:text-primary hover:bg-transparent">
+            <Link href="#about" className="text-sm font-medium text-muted-foreground transition-colors">
               About
             </Link>
           </Button>
-          <Button variant="ghost" asChild>
-            <Link href="#work" className="text-sm font-medium text-muted-foreground transition-colors hover:text-primary">
+          <Button variant="ghost" asChild className="hover:text-primary hover:bg-transparent">
+            <Link href="#work" className="text-sm font-medium text-muted-foreground transition-colors">
               Projects
             </Link>
           </Button>
-          <Button variant="ghost" asChild>
-            <Link href="#pricing" className="text-sm font-medium text-muted-foreground transition-colors hover:text-primary">
+          <Button variant="ghost" asChild className="hover:text-primary hover:bg-transparent">
+            <Link href="#pricing" className="text-sm font-medium text-muted-foreground transition-colors">
               Pricing
             </Link>
           </Button>
@@ -87,7 +87,6 @@ export function Navbar() {
             <Button asChild>
                 <Link href="#contact">Contact</Link>
             </Button>
-            <ThemeToggle />
         </motion.div>
 
         {/* Shrunken Content */}
