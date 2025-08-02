@@ -165,9 +165,9 @@ export const servicesData: Service[] = [
 ];
 
 export const aboutStats: Stat[] = [
-    { value: 4, text: '', label: 'Years of Experience' },
-    { value: 7, text: '', label: 'Completed Projects' },
-    { value: 15, text: '+', label: 'Clients on Worldwide' },
+    { value: 4, label: 'Years of Experience' },
+    { value: 8, label: 'Completed Projects' },
+    { value: 10, text: '+', label: 'Clients on Worldwide' },
 ];
 
 export const testimonialsData: Testimonial[] = [
