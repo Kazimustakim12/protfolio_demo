@@ -5,6 +5,7 @@ import { Toaster } from "@/components/ui/toaster";
 import { Footer } from '@/components/layout/Footer';
 import { CustomCursor } from '@/components/layout/CustomCursor';
 import { SmoothScroll } from '@/components/layout/SmoothScroll';
+import { ThemeProvider } from '@/components/providers/ThemeProvider';
 
 export const metadata: Metadata = {
   title: 'Mustakim Kazi - Creative Developer',
@@ -17,7 +18,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="dark">
+    <html lang="en" suppressHydrationWarning>
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
@@ -25,15 +26,22 @@ export default function RootLayout({
         <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
       </head>
       <body className={`font-sans antialiased grainy-texture`}>
-        <SmoothScroll>
-          <CustomCursor />
-          <Navbar />
-          <main className="flex-1 flex flex-col">
-            {children}
-          </main>
-          <Footer />
-          <Toaster />
-        </SmoothScroll>
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="dark"
+          enableSystem
+          disableTransitionOnChange
+        >
+          <SmoothScroll>
+            <CustomCursor />
+            <Navbar />
+            <main className="flex-1 flex flex-col">
+              {children}
+            </main>
+            <Footer />
+            <Toaster />
+          </SmoothScroll>
+        </ThemeProvider>
       </body>
     </html>
   );

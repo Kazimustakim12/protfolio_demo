@@ -6,6 +6,7 @@ import { motion, useMotionValueEvent, useScroll } from 'framer-motion';
 import { Button } from '@/components/ui/button';
 import { useState } from 'react';
 import { cn } from '@/lib/utils';
+import { ThemeToggle } from './ThemeToggle';
 
 export function Navbar() {
   const { scrollY } = useScroll();
@@ -56,35 +57,37 @@ export function Navbar() {
           className="flex items-center gap-2"
         >
           <Button variant="ghost" asChild>
-            <Link href="#" className="text-sm font-medium text-muted-foreground transition-colors">
+            <Link href="#" className="text-sm font-medium text-muted-foreground transition-colors hover:text-primary">
               Home
             </Link>
           </Button>
           <Button variant="ghost" asChild>
-            <Link href="#about" className="text-sm font-medium text-muted-foreground transition-colors">
+            <Link href="#about" className="text-sm font-medium text-muted-foreground transition-colors hover:text-primary">
               About
             </Link>
           </Button>
           <Button variant="ghost" asChild>
-            <Link href="#work" className="text-sm font-medium text-muted-foreground transition-colors">
+            <Link href="#work" className="text-sm font-medium text-muted-foreground transition-colors hover:text-primary">
               Projects
             </Link>
           </Button>
           <Button variant="ghost" asChild>
-            <Link href="#pricing" className="text-sm font-medium text-muted-foreground transition-colors">
+            <Link href="#pricing" className="text-sm font-medium text-muted-foreground transition-colors hover:text-primary">
               Pricing
             </Link>
           </Button>
         </motion.div>
 
         <motion.div
-            initial={{ opacity: 1, display: 'block' }}
-            animate={{ opacity: isShrunken ? 0 : 1, display: isShrunken ? 'none' : 'block' }}
+            initial={{ opacity: 1, display: 'flex' }}
+            animate={{ opacity: isShrunken ? 0 : 1, display: isShrunken ? 'none' : 'flex' }}
             transition={{ duration: 0.2, delay: isShrunken ? 0 : 0.1 }}
+            className="flex items-center gap-2"
         >
             <Button asChild>
                 <Link href="#contact">Contact</Link>
             </Button>
+            <ThemeToggle />
         </motion.div>
 
         {/* Shrunken Content */}
