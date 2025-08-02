@@ -20,3 +20,12 @@ export type SocialLinkItem = {
   href: string;
   icon: LucideIcon;
 };
+
+export type PricingPlan = {
+  id: string;
+  name: string;
+  price: string;
+  description: string;
+  features: string[];
+  isFeatured: boolean;
+};

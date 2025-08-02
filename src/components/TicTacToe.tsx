@@ -106,7 +106,7 @@ export function TicTacToe() {
   return (
     <div className="w-[450px] h-[450px] bg-card p-6 rounded-2xl shadow-2xl flex flex-col items-center justify-center gap-4 border border-white/10">
         <div className="flex justify-between items-center w-full">
-            <h3 className="text-xl font-bold text-foreground font-playfair">Tic-Tac-Toe</h3>
+            <h3 className="text-xl font-bold text-foreground font-serif">Tic-Tac-Toe</h3>
             <div className="h-10 px-4 py-2 flex items-center justify-center rounded-lg bg-background text-lg font-mono">
                 {gameStatus ? (
                     <span className={cn(winner === 'X' ? 'text-primary' : 'text-secondary')}>{gameStatus}</span>

@@ -44,14 +44,14 @@ export function HeroSection() {
           
           <motion.h1
             variants={itemVariants}
-            className="font-playfair text-6xl sm:text-7xl lg:text-8xl font-bold tracking-tight text-foreground"
+            className="font-serif text-6xl sm:text-7xl lg:text-8xl font-bold tracking-tight text-foreground"
           >
             Mustakim Kazi.
           </motion.h1>
 
           <motion.h2 
             variants={itemVariants}
-            className="font-playfair text-5xl sm:text-6xl lg:text-7xl font-bold tracking-tight text-muted-foreground mt-2"
+            className="font-serif text-5xl sm:text-6xl lg:text-7xl font-bold tracking-tight text-muted-foreground mt-2"
           >
             I build things for the web.
           </motion.h2>

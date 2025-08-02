@@ -1,4 +1,4 @@
-import type { Project, Skill, SocialLinkItem } from '@/types';
+import type { Project, Skill, SocialLinkItem, PricingPlan } from '@/types';
 import { Github, Linkedin, Twitter } from 'lucide-react';
 
 export const socialLinks: SocialLinkItem[] = [
@@ -50,4 +50,51 @@ export const skillsData: Skill[] = [
   { name: 'Framer Motion' },
   { name: 'Firebase' },
   { name: 'GraphQL' },
+];
+
+export const pricingPlans: PricingPlan[] = [
+  {
+    id: 'plan-1',
+    name: 'Starter',
+    price: '$499',
+    description: 'For small projects & startups',
+    features: [
+      '3-5 Page Website',
+      'Responsive Design',
+      'Basic SEO Setup',
+      'Contact Form',
+      '2 Rounds of Revisions',
+    ],
+    isFeatured: false,
+  },
+  {
+    id: 'plan-2',
+    name: 'Business',
+    price: '$1299',
+    description: 'For growing businesses',
+    features: [
+      '5-10 Page Website',
+      'Custom Design & Features',
+      'CMS Integration',
+      'Advanced SEO',
+      '4 Rounds of Revisions',
+      'Priority Support',
+    ],
+    isFeatured: true,
+  },
+  {
+    id: 'plan-3',
+    name: 'Enterprise',
+    price: "Let's Talk",
+    description: 'For large-scale applications',
+    features: [
+      'Unlimited Pages',
+      'Full-stack Application',
+      'E-commerce Functionality',
+      'API Integrations',
+      'Ongoing Maintenance',
+      'Dedicated Support',
+    ],
+    isFeatured: false,
+  },
 ];

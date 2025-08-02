@@ -20,8 +20,8 @@ const config = {
       },
       extend: {
         fontFamily: {
-          sans: ["var(--font-inter)", ...fontFamily.sans],
-          playfair: ["var(--font-playfair)", ...fontFamily.serif],
+          sans: ["var(--font-poppins)", ...fontFamily.sans],
+          serif: ["var(--font-lora)", ...fontFamily.serif],
         },
         colors: {
           border: "hsl(var(--border))",

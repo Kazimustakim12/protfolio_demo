@@ -1,19 +1,19 @@
 import type { Metadata } from 'next';
-import { Inter } from 'next/font/google';
-import { Playfair_Display } from 'next/font/google';
+import { Poppins, Lora } from 'next/font/google';
 import './globals.css';
 import { Navbar } from '@/components/layout/Navbar';
 import { Toaster } from "@/components/ui/toaster";
 import { Footer } from '@/components/layout/Footer';
 
-const inter = Inter({
+const poppins = Poppins({
   subsets: ['latin'],
-  variable: '--font-inter',
+  variable: '--font-poppins',
+  weight: ['400', '500', '600', '700'],
 });
 
-const playfair = Playfair_Display({
+const lora = Lora({
   subsets: ['latin'],
-  variable: '--font-playfair',
+  variable: '--font-lora',
 });
 
 export const metadata: Metadata = {
@@ -28,7 +28,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="dark">
-      <body className={`${inter.variable} ${playfair.variable} font-sans antialiased bg-background text-foreground`}>
+      <body className={`${poppins.variable} ${lora.variable} font-sans antialiased bg-background text-foreground`}>
         <Navbar />
         <main className="flex-1 flex flex-col">
           {children}

@@ -20,7 +20,8 @@ export function Navbar() {
   const navLinks = [
     { name: '01. About', href: '#about' },
     { name: '02. Work', href: '#work' },
-    { name: '03. Contact', href: '#contact' },
+    { name: '03. Pricing', href: '#pricing' },
+    { name: '04. Contact', href: '#contact' },
   ];
 
   return (
@@ -37,7 +38,7 @@ export function Navbar() {
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center">
           <Link href="/" className="flex items-center gap-2 text-xl font-bold group">
             <Code2 className="w-6 h-6 text-accent group-hover:animate-pulse" />
-            <span className="font-playfair">KAZI</span>
+            <span className="font-serif">KAZI</span>
           </Link>
           <nav className="hidden md:flex items-center space-x-8">
             {navLinks.map((link) => (
