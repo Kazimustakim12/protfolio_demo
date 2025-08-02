@@ -13,7 +13,7 @@ export const projectsData: Project[] = [
       title: 'Agency Landing Page',
       description: 'A sleek and modern landing page for a digital agency, built with Next.js and Tailwind CSS. Features a fully responsive design, smooth animations, and a focus on converting visitors into clients.',
       imageUrl: 'https://placehold.co/1280x720.png',
-      imageHint: 'digital agency dark',
+      imageHint: 'futuristic man vr',
       techStack: ['Next.js', 'Tailwind CSS', 'Framer Motion', 'TypeScript'],
       liveDemoUrl: '#',
       githubRepoUrl: '#',

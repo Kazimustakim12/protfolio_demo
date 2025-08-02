@@ -4,7 +4,8 @@ import { motion } from 'framer-motion';
 import Image from 'next/image';
 import { projectsData } from '@/lib/data';
 import { Badge } from '@/components/ui/badge';
-import { ExternalLink, Github } from 'lucide-react';
+import { ArrowUpRight } from 'lucide-react';
+import Link from 'next/link';
 
 const sectionVariants = {
   hidden: { opacity: 0, y: 50 },
@@ -15,9 +16,13 @@ const sectionVariants = {
   }
 };
 
-const projectVariants = {
+const cardVariants = {
   hidden: { opacity: 0, scale: 0.95 },
-  visible: { opacity: 1, scale: 1, transition: { duration: 0.6 } }
+  visible: { 
+    opacity: 1, 
+    scale: 1, 
+    transition: { duration: 0.6, ease: 'easeOut' }
+  }
 };
 
 export function ProjectsSection() {
@@ -30,53 +35,48 @@ export function ProjectsSection() {
       whileInView="visible"
       viewport={{ once: true, amount: 0.1 }}
     >
-      <h2 className="section-heading mb-12 text-center">
-        <span className="text-accent font-sans text-xl font-medium">02.</span> Some Things I’ve Built
-      </h2>
-      <div className="space-y-24">
-        {projectsData.map((project, index) => (
-          <motion.div 
+      <div className="text-center mb-16">
+        <h2 className="section-heading">Featured Projects</h2>
+        <p className="max-w-2xl mx-auto mt-4 text-lg text-muted-foreground">
+          These selected projects reflect my passion for blending strategy with creativity — solving real problems through thoughtful design and impactful storytelling.
+        </p>
+      </div>
+
+      <div className="space-y-12">
+        {projectsData.map((project) => (
+          <motion.div
             key={project.id}
-            variants={projectVariants}
-            className={`group grid grid-cols-1 md:grid-cols-12 gap-8 items-center`}
+            variants={cardVariants}
+            className="group relative w-full h-[60vh] min-h-[500px] rounded-3xl overflow-hidden"
           >
-            <div className={`relative h-80 w-full rounded-lg overflow-hidden shadow-2xl md:col-span-7 ${index % 2 === 1 ? 'md:order-last' : ''}`}>
-                <Image
-                    src={project.imageUrl}
-                    alt={project.title}
-                    fill
-                    className="object-cover object-center transition-transform duration-500 ease-in-out group-hover:scale-105"
-                    data-ai-hint={project.imageHint}
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent" />
-            </div>
-            
-            <div className={`md:col-span-5 ${index % 2 === 1 ? 'md:text-left' : 'md:text-right'}`}>
-              <p className="text-sm text-accent font-medium mb-2">Featured Project</p>
-              <h3 className="text-2xl font-bold text-foreground mb-4">{project.title}</h3>
-              <div className="bg-card p-6 rounded-lg shadow-lg mb-4">
-                  <p className="text-muted-foreground text-left">{project.description}</p>
+            <Link href={project.liveDemoUrl || '#'} target='_blank'>
+              <Image
+                src={project.imageUrl}
+                alt={project.title}
+                fill
+                className="object-cover object-center transition-transform duration-500 ease-in-out group-hover:scale-105"
+                data-ai-hint={project.imageHint}
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/40 to-transparent" />
+              
+              <div className="absolute inset-0 flex flex-col items-center justify-center text-center text-white p-8">
+                <Badge variant="secondary" className="bg-secondary/80 text-secondary-foreground mb-4 backdrop-blur-sm">
+                  {project.techStack[0]}
+                </Badge>
+                <h3 className="text-4xl md:text-5xl font-bold font-serif mb-4">
+                  {project.title}
+                </h3>
+                <p className="max-w-md text-base text-white/80">
+                  {project.description}
+                </p>
               </div>
-              <div className={`flex flex-wrap gap-2 mb-4 ${index % 2 === 1 ? 'justify-start' : 'justify-end'}`}>
-                {project.techStack.map((tech) => (
-                  <Badge key={tech} variant="secondary" className="bg-secondary/20 text-secondary-foreground">
-                    {tech}
-                  </Badge>
-                ))}
+
+              <div className="absolute top-6 right-6 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                <div className="w-16 h-16 bg-accent rounded-full flex items-center justify-center">
+                  <ArrowUpRight className="w-8 h-8 text-accent-foreground" />
+                </div>
               </div>
-              <div className={`flex items-center space-x-4 ${index % 2 === 1 ? 'justify-start' : 'justify-end'}`}>
-                {project.liveDemoUrl && (
-                  <a href={project.liveDemoUrl} target="_blank" rel="noopener noreferrer" className="inline-flex items-center text-sm text-muted-foreground hover:text-accent transition-colors">
-                    <ExternalLink className="w-5 h-5"/>
-                  </a>
-                )}
-                {project.githubRepoUrl && (
-                  <a href={project.githubRepoUrl} target="_blank" rel="noopener noreferrer" className="inline-flex items-center text-sm text-muted-foreground hover:text-accent transition-colors">
-                    <Github className="w-5 h-5"/>
-                  </a>
-                )}
-              </div>
-            </div>
+            </Link>
           </motion.div>
         ))}
       </div>
