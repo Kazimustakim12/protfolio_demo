@@ -74,13 +74,13 @@ export function ServicesSection() {
             {servicesData.map((service, index) => (
               <div
                 key={service.id}
-                onClick={() => handleItemClick(index)}
                 className="border-b border-white/10 last:border-b-0 cursor-pointer"
               >
                 <motion.div 
                   variants={itemVariants}
                   onMouseEnter={() => setHoveredIndex(index)}
                   onMouseLeave={() => setHoveredIndex(null)}
+                  onClick={() => handleItemClick(index)}
                 >
                   <div className="flex justify-between items-center py-6">
                     <span className="text-xl font-semibold">
@@ -126,8 +126,8 @@ export function ServicesSection() {
                     animate={{ 
                         opacity: 1, 
                         scale: 1,
-                        x: mousePosition.x - 128, // Subtract half of image width
-                        y: mousePosition.y - 80, // Subtract half of image height
+                        x: mousePosition.x - 20, 
+                        y: mousePosition.y - 20,
                     }}
                     exit={{ opacity: 0, scale: 0.8 }}
                     transition={{ type: 'spring', stiffness: 300, damping: 25, mass: 0.5 }}
