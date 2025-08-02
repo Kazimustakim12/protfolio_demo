@@ -155,7 +155,7 @@ export const servicesData: Service[] = [
 ];
 
 export const aboutStats: Stat[] = [
-    { value: 12, text: '', label: 'Years of Experience' },
-    { value: 270, text: '', label: 'Completed Projects' },
-    { value: 50, text: '+', label: 'Clients on Worldwide' },
+    { value: 4, text: '', label: 'Years of Experience' },
+    { value: 7, text: '', label: 'Completed Projects' },
+    { value: 15, text: '+', label: 'Clients on Worldwide' },
 ];

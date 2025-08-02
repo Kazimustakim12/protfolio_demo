@@ -24,7 +24,7 @@ export function AboutSection() {
   return (
     <motion.section 
       id="about" 
-      className="section-container bg-card py-24 sm:py-32"
+      className="section-container py-24 sm:py-32"
       variants={sectionVariants}
       initial="hidden"
       whileInView="visible"
