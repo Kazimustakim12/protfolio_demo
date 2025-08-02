@@ -109,7 +109,7 @@ export function ContactSection() {
             whileInView={{ scale: 1, rotate: 0 }}
             transition={{ type: 'spring', stiffness: 260, damping: 20, delay: 0.3 }}
             viewport={{ once: true }}
-            className="absolute -bottom-12 -left-12 w-32 h-32 bg-highlight rounded-full flex items-center justify-center"
+            className="absolute -bottom-12 -left-12 w-32 h-32 bg-highlight rounded-full flex items-center justify-center shadow-2xl"
           >
             <Hand className="w-16 h-16 text-black" fill="black" />
           </motion.div>
