@@ -4,35 +4,65 @@
 
 @layer base {
   :root {
-    --background: 224 71% 4%; /* #0f172a */
-    --foreground: 0 0% 98%; /* #fafafa */
+    --background: 215 28% 17%; /* #1b263b - Oxford Blue */
+    --foreground: 220 14% 96%; /* #f5f7fa */
 
-    --card: 224 71% 4%;
-    --card-foreground: 0 0% 98%;
+    --card: 215 28% 14%; /* Darker Oxford Blue */
+    --card-foreground: 220 14% 96%;
 
-    --popover: 224 71% 4%;
-    --popover-foreground: 0 0% 98%;
+    --popover: 215 28% 14%;
+    --popover-foreground: 220 14% 96%;
 
-    --primary: 210 40% 98%; /* #f8fafc - For primary text */
-    --primary-foreground: 222 47% 11%; /* #111827 - For text on primary bg */
+    --primary: 212 66% 84%; /* Light blue for primary text/elements */
+    --primary-foreground: 215 28% 17%;
 
-    --secondary: 40 84% 53%; /* gold/yellow accent */
-    --secondary-foreground: 224 71% 4%;
+    --secondary: 210 22% 49%; /* #778da9 - Yinmn Blue */
+    --secondary-foreground: 220 14% 96%;
 
-    --muted: 240 4% 16%;
-    --muted-foreground: 240 4% 65%;
+    --muted: 210 22% 40%;
+    --muted-foreground: 220 14% 80%;
 
-    --accent: 240 4% 16%;
-    --accent-foreground: 0 0% 98%;
+    --accent: 34 91% 64%; /* A gold/orange accent */
+    --accent-foreground: 215 28% 17%;
     
-    --destructive: 0 84% 60%;
-    --destructive-foreground: 0 0% 98%;
+    --destructive: 0 63% 31%;
+    --destructive-foreground: 220 14% 96%;
 
-    --border: 240 4% 16%;
-    --input: 240 4% 16%;
-    --ring: 240 5% 65%;
+    --border: 210 22% 49%;
+    --input: 210 22% 49%;
+    --ring: 34 91% 64%;
 
     --radius: 0.5rem;
+  }
+
+  .dark {
+    --background: 215 28% 17%; /* #1b263b - Oxford Blue */
+    --foreground: 220 14% 96%; /* #f5f7fa */
+
+    --card: 215 28% 14%; /* Darker Oxford Blue */
+    --card-foreground: 220 14% 96%;
+
+    --popover: 215 28% 14%;
+    --popover-foreground: 220 14% 96%;
+
+    --primary: 212 66% 84%; /* Light blue for primary text/elements */
+    --primary-foreground: 215 28% 17%;
+
+    --secondary: 210 22% 49%; /* #778da9 - Yinmn Blue */
+    --secondary-foreground: 220 14% 96%;
+
+    --muted: 210 22% 40%;
+    --muted-foreground: 220 14% 80%;
+
+    --accent: 34 91% 64%; /* A gold/orange accent */
+    --accent-foreground: 215 28% 17%;
+    
+    --destructive: 0 63% 31%;
+    --destructive-foreground: 220 14% 96%;
+
+    --border: 210 22% 49%;
+    --input: 210 22% 49%;
+    --ring: 34 91% 64%;
   }
 }
 
@@ -52,9 +82,12 @@
     left: 0;
     right: 0;
     bottom: 0;
-    background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 800"><g fill-opacity="0.2"><circle fill="black" cx="400" cy="400" r="400"/><path fill-rule="evenodd" d="M0 0h800v800H0V0zm400 400c0 220.914-179.086 400-400 400V400h400z" fill="rgba(255,255,255,0.02)"/></g></svg>');
-    background-size: 800px 800px;
-    opacity: 0.2;
+    background-image:
+      radial-gradient(circle at center, rgba(255,255,255,0.03) 0, rgba(255,255,255,0) 4px),
+      repeating-linear-gradient(0deg, rgba(255,255,255, 0.02) 0, rgba(255,255,255, 0.02) 1px, transparent 1px, transparent 14px),
+      repeating-linear-gradient(90deg, rgba(255,255,255, 0.02) 0, rgba(255,255,255, 0.02) 1px, transparent 1px, transparent 14px);
+    background-size: 14px 14px;
+    opacity: 0.6;
     z-index: -1;
     pointer-events: none;
   }

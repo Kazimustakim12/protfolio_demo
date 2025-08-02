@@ -11,19 +11,8 @@ export type Project = {
   githubRepoUrl?: string;
 };
 
-export type Service = {
-  title: string;
-  description: string;
-  icon?: LucideIcon;
-};
-
 export type Skill = {
-  name: string;
-};
-
-export type NavLinkItem = {
-  name: string;
-  href: string;
+  name:string;
 };
 
 export type SocialLinkItem = {
