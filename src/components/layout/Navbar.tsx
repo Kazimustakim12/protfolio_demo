@@ -29,10 +29,14 @@ export function Navbar() {
       setActiveSection(currentSection);
     };
 
-    window.addEventListener('scroll', handleScroll);
-    handleScroll(); // Initial check
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+    if (pathname === '/') {
+      window.addEventListener('scroll', handleScroll);
+      handleScroll(); // Initial check
+      return () => window.removeEventListener('scroll', handleScroll);
+    }
+  }, [pathname]);
+
+  const getLinkHref = (href: string) => (pathname === '/' ? href : `/${href}`);
 
   const linkVariants = {
     hover: { scale: 1.1, color: "hsl(var(--primary))" },
@@ -49,7 +53,7 @@ export function Navbar() {
     >
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-20">
-          <Link href="#home" className="flex items-center space-x-2 text-2xl font-bold text-primary hover:text-accent transition-colors">
+          <Link href="/" className="flex items-center space-x-2 text-2xl font-bold text-primary hover:text-accent transition-colors">
             <CodeXml size={32} />
             <span>Portfolio Pro</span>
           </Link>
@@ -59,7 +63,7 @@ export function Navbar() {
             {navLinks.map((link) => (
               <motion.a
                 key={link.name}
-                href={link.href}
+                href={getLinkHref(link.href)}
                 variants={linkVariants}
                 whileHover="hover"
                 animate={activeSection === link.href.substring(1) ? "active" : "inactive"}
@@ -91,7 +95,7 @@ export function Navbar() {
                   {navLinks.map((link) => (
                     <Link
                       key={link.name}
-                      href={link.href}
+                      href={getLinkHref(link.href)}
                       className={`text-lg font-medium transition-colors hover:text-primary ${activeSection === link.href.substring(1) ? "text-primary font-semibold" : "text-foreground"}`}
                       onClick={() => setIsOpen(false)}
                     >

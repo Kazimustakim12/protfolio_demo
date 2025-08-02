@@ -52,9 +52,9 @@ export function AboutMeSection() {
           </motion.div>
 
           <motion.div className="space-y-6" variants={itemVariants}>
-            <h3 className="text-2xl font-semibold text-primary">Hello! I&apos;m Your Name.</h3>
+            <h3 className="text-2xl font-semibold text-primary">Hello! I'm Your Name.</h3>
             <p className="text-lg leading-relaxed">
-              I&apos;m a dedicated Frontend Developer with X years of experience in crafting beautiful, high-performing, and user-centric web applications. My journey in web development started with a fascination for how code translates into interactive digital experiences, and this passion continues to drive me every day.
+              I'm a dedicated Frontend Developer with X years of experience in crafting beautiful, high-performing, and user-centric web applications. My journey in web development started with a fascination for how code translates into interactive digital experiences, and this passion continues to drive me every day.
             </p>
             <p className="text-lg leading-relaxed">
               I thrive on solving complex problems and continuously learning new technologies to stay at the forefront of web development. My expertise lies in translating design mockups into pixel-perfect, responsive UIs and building robust frontend architectures.

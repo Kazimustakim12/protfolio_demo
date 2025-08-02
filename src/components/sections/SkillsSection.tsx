@@ -28,12 +28,11 @@ export function SkillsSection() {
       transition: { delay: i * 0.05, duration: 0.3 }
     })
   };
-
-  // Capitalized aliases for motion components
+  
   const MotionSection = motion.section;
   const MotionH2 = motion.h2;
   const MotionDiv = motion.div;
-  
+
   return (
     <MotionSection 
       id="skills" 

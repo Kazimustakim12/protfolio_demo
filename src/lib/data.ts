@@ -1,7 +1,7 @@
 import type { Project, Skill, NavLinkItem, SocialLinkItem, ServiceItem, EducationItem, BlogPost } from '@/types';
 import { 
   Cpu, Database, Figma, Framer, GitBranch, Globe, Palette, PenTool, Server, Smartphone, Webhook,
-  Home, User, Briefcase, Layers, Mail, Twitter, Linkedin, Instagram, Box, Search, GraduationCap, Award, FileText, Newspaper
+  Home, User, Briefcase, Layers, Mail, Twitter, Linkedin, Instagram, Box, Search, GraduationCap, Award, FileText, Newspaper, Code
 } from 'lucide-react';
 
 export const projectsData: Project[] = [
@@ -25,25 +25,42 @@ export const projectsData: Project[] = [
     liveDemoUrl: '#',
     githubRepoUrl: '#',
   },
+  {
+    id: '3',
+    title: 'Portfolio Website',
+    description: 'A personal portfolio to showcase my skills and projects, built with a focus on performance and aesthetics.',
+    imageUrl: 'https://placehold.co/600x400.png',
+    imageHint: 'developer portfolio',
+    techStack: ['Next.js', 'Framer Motion', 'Tailwind CSS'],
+    liveDemoUrl: '#',
+    githubRepoUrl: '#',
+  }
 ];
 
 export const skillsData: Skill[] = [
   { name: 'HTML5', category: 'Languages', icon: Globe },
   { name: 'CSS3', category: 'Languages', icon: Palette },
-  { name: 'JavaScript (ES6+)', category: 'Languages', icon: Webhook },
-  { name: 'TypeScript', category: 'Languages', icon: Webhook },
+  { name: 'JavaScript (ES6+)', category: 'Languages', icon: Code },
+  { name: 'TypeScript', category: 'Languages', icon: Code },
   { name: 'React', category: 'Frameworks & Libraries', icon: Framer },
   { name: 'Next.js', category: 'Frameworks & Libraries', icon: Framer },
+  { name: 'Node.js', category: 'Frameworks & Libraries', icon: Server },
   { name: 'Tailwind CSS', category: 'Frameworks & Libraries', icon: PenTool },
+  { name: 'Redux', category: 'Frameworks & Libraries', icon: Cpu },
+  { name: 'Framer Motion', category: 'Frameworks & Libraries', icon: Framer },
+  { name: 'Git & GitHub', category: 'Tools & Platforms', icon: GitBranch },
+  { name: 'Firebase', category: 'Tools & Platforms', icon: Database },
+  { name: 'MongoDB', category: 'Databases', icon: Database },
+  { name: 'Figma', category: 'Design', icon: Figma },
+  { name: 'UI/UX Design', category: 'Design', icon: Palette },
 ];
 
 export const navLinks: NavLinkItem[] = [
-  { name: 'Home', href: '/', icon: Home },
-  { name: 'About', href: '/about', icon: User },
-  { name: 'Projects', href: '/projects', icon: Briefcase },
-  { name: 'Stack', href: '/stack', icon: Layers },
-  { name: 'Blog', href: '/blog', icon: Newspaper },
-  { name: 'Contact', href: '/contact', icon: Mail },
+  { name: 'Home', href: '#home' },
+  { name: 'About', href: '#about' },
+  { name: 'Projects', href: '#projects' },
+  { name: 'Skills', href: '#skills' },
+  { name: 'Contact', href: '#contact' },
 ];
 
 export const socialLinks: SocialLinkItem[] = [

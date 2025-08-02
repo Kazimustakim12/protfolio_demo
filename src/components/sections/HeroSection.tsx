@@ -22,7 +22,7 @@ export function HeroSection() {
             className="space-y-6"
           >
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight">
-              Hi, I&apos;m <span className="text-primary">Your Name</span>
+              Hi, I'm <span className="text-primary">Your Name</span>
             </h1>
             <p className="text-xl sm:text-2xl text-muted-foreground">
               A passionate Frontend Developer transforming ideas into captivating web experiences.

@@ -77,9 +77,9 @@ export function ContactSection() {
         
         <div className="grid md:grid-cols-2 gap-12">
           <motion.div className="space-y-6" variants={itemVariants}>
-            <h3 className="text-2xl font-semibold text-primary">Let&apos;s Connect</h3>
+            <h3 className="text-2xl font-semibold text-primary">Let's Connect</h3>
             <p className="text-lg text-muted-foreground">
-              I&apos;m always excited to discuss new projects, creative ideas, or opportunities to collaborate. Feel free to reach out!
+              I'm always excited to discuss new projects, creative ideas, or opportunities to collaborate. Feel free to reach out!
             </p>
             <div className="space-y-4">
               <a href="mailto:youremail@example.com" className="flex items-center space-x-3 group">

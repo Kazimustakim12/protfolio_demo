@@ -1,7 +1,8 @@
 import type { Metadata } from 'next';
 import { Geist } from 'next/font/google';
 import './globals.css';
-import { Sidebar } from '@/components/layout/Sidebar';
+import { Navbar } from '@/components/layout/Navbar';
+import { Footer } from '@/components/layout/Footer';
 import { Toaster } from "@/components/ui/toaster";
 
 const geistSans = Geist({
@@ -10,8 +11,8 @@ const geistSans = Geist({
 });
 
 export const metadata: Metadata = {
-  title: 'Nicole Harper | Creative Designer & Developer',
-  description: 'Portfolio of Nicole Harper, a passionate Creative Designer and Developer specializing in UI/UX, web design, and SEO.',
+  title: 'Portfolio Pro | Creative Developer & Designer',
+  description: 'Portfolio of a passionate Creative Developer and Designer specializing in modern web technologies, UI/UX, and beautiful digital experiences.',
 };
 
 export default function RootLayout({
@@ -22,12 +23,11 @@ export default function RootLayout({
   return (
     <html lang="en" className="!scroll-smooth">
       <body className={`${geistSans.variable} antialiased bg-background text-foreground`}>
-        <div className="flex min-h-screen">
-          <Sidebar />
-          <main className="flex-1 flex flex-col overflow-y-auto ml-64">
-            {children}
-          </main>
-        </div>
+        <Navbar />
+        <main className="flex-1 flex flex-col">
+          {children}
+        </main>
+        <Footer />
         <Toaster />
       </body>
     </html>
