@@ -12,6 +12,11 @@ export type Project = {
   githubRepoUrl?: string;
 };
 
+export type Service = {
+  title: string;
+  description: string;
+};
+
 export type Skill = {
   name: string;
   category: 'Languages' | 'Frameworks & Libraries' | 'Tools & Platforms' | 'Databases' | 'Design';
