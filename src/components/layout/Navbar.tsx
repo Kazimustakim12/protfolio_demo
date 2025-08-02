@@ -27,7 +27,7 @@ export function Navbar() {
       }}
       animate={hidden ? "hidden" : "visible"}
       transition={{ duration: 0.35, ease: "easeInOut" }}
-      className="fixed top-4 left-1/2 -translate-x-1/2 z-50"
+      className="fixed top-4 w-full flex justify-center z-50"
     >
       <nav className="flex items-center gap-4 bg-card/50 backdrop-blur-lg border border-white/10 rounded-full py-2 px-4">
         <Link href="/">
