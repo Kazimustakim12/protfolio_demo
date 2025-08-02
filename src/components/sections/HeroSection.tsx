@@ -27,62 +27,63 @@ export function HeroSection() {
   };
 
   return (
-    <section className="relative flex-1 flex flex-col justify-center container mx-auto px-4 sm:px-6 lg:px-8 min-h-[80vh] py-20 overflow-hidden">
+    <section className="relative flex h-screen flex-col justify-center overflow-hidden">
         <div className="absolute inset-0 -z-10 h-full w-full bg-background bg-[linear-gradient(to_right,#8080800a_1px,transparent_1px),linear-gradient(to_bottom,#8080800a_1px,transparent_1px)] bg-[size:14px_24px]"/>
         <div className="absolute left-1/2 top-0 -z-10 h-32 w-48 -translate-x-1/2 rounded-full bg-secondary/50 blur-3xl" />
 
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <motion.div
+                variants={containerVariants}
+                initial="hidden"
+                animate="visible"
+                className="grid md:grid-cols-2 gap-12 items-center"
+            >
+                <div className="max-w-3xl">
+                    <motion.p 
+                        variants={itemVariants}
+                        className="text-lg text-accent font-medium font-sans mb-4"
+                    >
+                        Hi, my name is
+                    </motion.p>
+                    
+                    <motion.h1
+                        variants={itemVariants}
+                        className="font-serif text-6xl sm:text-7xl lg:text-8xl font-bold tracking-tight text-foreground"
+                    >
+                        Mustakim Kazi.
+                    </motion.h1>
 
-      <motion.div
-        variants={containerVariants}
-        initial="hidden"
-        animate="visible"
-        className="grid md:grid-cols-2 gap-12 items-center"
-      >
-        <div className="max-w-3xl">
-          <motion.p 
-            variants={itemVariants}
-            className="text-lg text-accent font-medium font-sans mb-4"
-          >
-            Hi, my name is
-          </motion.p>
-          
-          <motion.h1
-            variants={itemVariants}
-            className="font-serif text-6xl sm:text-7xl lg:text-8xl font-bold tracking-tight text-foreground"
-          >
-            Mustakim Kazi.
-          </motion.h1>
+                    <motion.h2 
+                        variants={itemVariants}
+                        className="font-serif text-5xl sm:text-6xl lg:text-7xl font-bold tracking-tight text-muted-foreground mt-2"
+                    >
+                        I build things for the web.
+                    </motion.h2>
 
-          <motion.h2 
-            variants={itemVariants}
-            className="font-serif text-5xl sm:text-6xl lg:text-7xl font-bold tracking-tight text-muted-foreground mt-2"
-          >
-            I build things for the web.
-          </motion.h2>
-
-          <motion.p 
-            variants={itemVariants}
-            className="mt-8 max-w-xl text-lg text-muted-foreground leading-relaxed"
-          >
-            I'm a creative developer focused on crafting beautiful, functional, and high-performance web experiences. Currently, I'm focused on building accessible, human-centered products.
-          </motion.p>
-          
-          <motion.div 
-            variants={itemVariants}
-            className="mt-12"
-          >
-            <Button size="lg" asChild className="text-lg py-7 px-8 bg-accent text-accent-foreground hover:bg-accent/90">
-              <a href="#work">Check out my work!</a>
-            </Button>
-          </motion.div>
+                    <motion.p 
+                        variants={itemVariants}
+                        className="mt-8 max-w-xl text-lg text-muted-foreground leading-relaxed"
+                    >
+                        I'm a creative developer focused on crafting beautiful, functional, and high-performance web experiences. Currently, I'm focused on building accessible, human-centered products.
+                    </motion.p>
+                    
+                    <motion.div 
+                        variants={itemVariants}
+                        className="mt-12"
+                    >
+                        <Button size="lg" asChild className="text-lg py-7 px-8 bg-accent text-accent-foreground hover:bg-accent/90">
+                        <a href="#work">Check out my work!</a>
+                        </Button>
+                    </motion.div>
+                </div>
+                <motion.div 
+                    variants={gameVariants}
+                    className="relative hidden md:flex justify-center items-center h-full"
+                >
+                    <TicTacToe />
+                </motion.div>
+            </motion.div>
         </div>
-        <motion.div 
-            variants={gameVariants}
-            className="relative hidden md:flex justify-center items-center h-full"
-        >
-          <TicTacToe />
-        </motion.div>
-      </motion.div>
     </section>
   );
 }
