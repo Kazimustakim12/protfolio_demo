@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import Image from "next/image";
+import { AnimatedCoder } from "@/components/AnimatedCoder";
 
 export function HeroSection() {
 
@@ -23,11 +23,11 @@ export function HeroSection() {
 
   const imageVariants = {
     hidden: { opacity: 0, scale: 0.8 },
-    visible: { opacity: 1, scale: 1, transition: { duration: 0.8, ease: "easeOut" } },
+    visible: { opacity: 1, scale: 1, transition: { duration: 0.8, ease: "easeOut", delay: 0.4 } },
   };
 
   return (
-    <section className="flex-1 flex flex-col justify-center container mx-auto px-4 sm:px-6 lg:px-8 min-h-[80vh]">
+    <section className="flex-1 flex flex-col justify-center container mx-auto px-4 sm:px-6 lg:px-8 min-h-[80vh] py-20">
       <motion.div
         variants={containerVariants}
         initial="hidden"
@@ -76,14 +76,7 @@ export function HeroSection() {
             variants={imageVariants}
             className="relative hidden md:flex justify-center items-center h-full"
         >
-            <Image 
-                src="https://placehold.co/600x600.png"
-                alt="3D abstract model"
-                width={500}
-                height={500}
-                className="rounded-full object-cover shadow-2xl"
-                data-ai-hint="abstract 3d model"
-            />
+            <AnimatedCoder />
         </motion.div>
       </motion.div>
     </section>
