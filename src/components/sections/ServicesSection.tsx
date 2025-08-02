@@ -26,7 +26,7 @@ const itemVariants = {
 };
 
 export function ServicesSection() {
-  const [activeIndex, setActiveIndex] = useState<number | null>(0);
+  const [activeIndex, setActiveIndex] = useState<number | null>(null);
 
   return (
     <motion.section
@@ -46,7 +46,10 @@ export function ServicesSection() {
             </p>
           </motion.div>
 
-          <div className="relative space-y-2">
+          <div 
+            className="relative space-y-2"
+            onMouseLeave={() => setActiveIndex(null)}
+          >
             {servicesData.map((service, index) => (
               <div
                 key={service.id}
