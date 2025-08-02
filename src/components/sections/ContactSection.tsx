@@ -45,7 +45,7 @@ function SubmitButton() {
     <Button 
       type="submit" 
       disabled={pending}
-      className="w-full text-lg py-7 px-8 bg-transparent border-2 border-highlight text-highlight hover:bg-highlight hover:text-black"
+      className="w-full text-lg py-7 px-8 bg-transparent border-2 border-accent text-accent hover:bg-accent hover:text-accent-foreground"
     >
       {pending ? <Loader2 className="mr-2 h-6 w-6 animate-spin" /> : 'SUBMIT'}
     </Button>
@@ -129,7 +129,7 @@ export function ContactSection() {
                   name="name"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel className="text-highlight">Name</FormLabel>
+                      <FormLabel className="text-accent">Name</FormLabel>
                       <FormControl>
                         <Input placeholder="John Smith" {...field} />
                       </FormControl>
@@ -142,7 +142,7 @@ export function ContactSection() {
                   name="email"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel className="text-highlight">Email</FormLabel>
+                      <FormLabel className="text-accent">Email</FormLabel>
                       <FormControl>
                         <Input placeholder="johnsmith@gmail.com" {...field} />
                       </FormControl>
@@ -157,7 +157,7 @@ export function ContactSection() {
                   name="service"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel className="text-highlight">Service Needed?</FormLabel>
+                      <FormLabel className="text-accent">Service Needed?</FormLabel>
                       <Select onValueChange={field.onChange} defaultValue={field.value}>
                         <FormControl>
                           <SelectTrigger>
@@ -182,7 +182,7 @@ export function ContactSection() {
                 name="message"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel className="text-highlight">What Can I Help You With...</FormLabel>
+                    <FormLabel className="text-accent">What Can I Help You With...</FormLabel>
                     <FormControl>
                       <Textarea
                         placeholder="Hello, I'd like to enquire about..."
