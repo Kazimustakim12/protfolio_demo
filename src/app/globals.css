@@ -64,12 +64,15 @@
     --input: 217 33% 20%;
     --ring: 12 95% 62%;
   }
+}
 
+@layer base {
   * {
-    @apply border-border;
+    border-color: hsl(var(--border));
   }
   body {
-    @apply bg-background text-foreground;
+    background-color: hsl(var(--background));
+    color: hsl(var(--foreground));
     background-image: 
       radial-gradient(ellipse at top, hsl(var(--background)), transparent),
       radial-gradient(ellipse at bottom, hsl(var(--secondary) / 0.2), transparent);

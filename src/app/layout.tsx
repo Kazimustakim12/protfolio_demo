@@ -23,9 +23,14 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="dark">
-      <body className={`${antonio.variable} font-sans antialiased bg-background text-foreground`}>
+      <body className={`${antonio.variable} font-sans antialiased`}>
         <Navbar />
         <main className="flex-1 flex flex-col">
           {children}
         </main>
         <Footer />
+        <Toaster />
+      </body>
+    </html>
+  );
+}
