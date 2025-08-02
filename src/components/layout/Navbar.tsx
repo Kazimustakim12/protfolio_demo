@@ -56,22 +56,22 @@ export function Navbar() {
           className="flex items-center gap-2"
         >
           <Button variant="ghost" asChild>
-            <Link href="#" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">
+            <Link href="#" className="text-sm font-medium text-muted-foreground transition-colors">
               Home
             </Link>
           </Button>
           <Button variant="ghost" asChild>
-            <Link href="#about" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">
+            <Link href="#about" className="text-sm font-medium text-muted-foreground transition-colors">
               About
             </Link>
           </Button>
           <Button variant="ghost" asChild>
-            <Link href="#work" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">
+            <Link href="#work" className="text-sm font-medium text-muted-foreground transition-colors">
               Projects
             </Link>
           </Button>
           <Button variant="ghost" asChild>
-            <Link href="#pricing" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">
+            <Link href="#pricing" className="text-sm font-medium text-muted-foreground transition-colors">
               Pricing
             </Link>
           </Button>
