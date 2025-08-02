@@ -32,7 +32,7 @@ const waveAnimation = {
 export function HeroSection() {
 
   return (
-    <section className="relative flex h-screen items-center justify-center overflow-hidden">
+    <section className="relative flex h-screen items-center justify-center overflow-hidden bg-transparent">
       <div className="absolute inset-0 z-0">
         <div className="absolute inset-0 bg-gradient-to-t from-background via-background/80 to-transparent" />
       </div>
