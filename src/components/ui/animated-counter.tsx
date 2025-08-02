@@ -1,7 +1,7 @@
 "use client";
 
-import { useEffect, useRef } from 'react';
-import { motion, useInView, useAnimate, useIsomorphicLayoutEffect } from 'framer-motion';
+import { useEffect } from 'react';
+import { motion, useInView, useAnimate } from 'framer-motion';
 
 type AnimatedCounterProps = {
   value: number;
@@ -11,16 +11,28 @@ type AnimatedCounterProps = {
 
 export function AnimatedCounter({ value, text, className }: AnimatedCounterProps) {
   const [scope, animate] = useAnimate();
-  const isInView = useInView(scope, { once: true });
+  const isInView = useInView(scope, { once: true, margin: "-100px" });
 
-  useIsomorphicLayoutEffect(() => {
+  useEffect(() => {
     if (isInView) {
-      animate(
-        (progress) => {
-          scope.current.textContent = `${Math.round(value * progress)}${text || ''}`;
-        },
-        { duration: 1.5, ease: 'easeOut' }
-      );
+        animate(
+            scope.current,
+            { opacity: 1 },
+            { duration: 0.3, delay: 0.2 }
+        )
+        animate(
+            0,
+            value,
+            {
+                duration: 1.5,
+                ease: "easeOut",
+                onUpdate: (latest) => {
+                    if (scope.current) {
+                        scope.current.textContent = `${Math.round(latest)}${text || ''}`;
+                    }
+                }
+            }
+        )
     }
   }, [isInView, value, text, animate, scope]);
 
@@ -28,6 +40,7 @@ export function AnimatedCounter({ value, text, className }: AnimatedCounterProps
     <motion.span 
         ref={scope} 
         className={`text-5xl font-bold text-accent font-serif ${className}`}
+        initial={{ opacity: 0 }}
     >
         {`0${text || ''}`}
     </motion.span>
