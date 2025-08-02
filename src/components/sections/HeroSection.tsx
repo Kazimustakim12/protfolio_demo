@@ -34,18 +34,7 @@ export function HeroSection() {
   return (
     <section className="relative flex h-screen items-center justify-center overflow-hidden">
       <div className="absolute inset-0 z-0">
-        <div className="absolute inset-0 bg-background" />
         <div className="absolute inset-0 bg-gradient-to-t from-background via-background/80 to-transparent" />
-        <div 
-          className="absolute inset-0"
-          style={{
-            backgroundImage: `
-              radial-gradient(ellipse at 50% 40%, hsl(var(--secondary) / 0.1), transparent 70%),
-              radial-gradient(ellipse at 20% 60%, hsl(var(--primary) / 0.05), transparent 70%),
-              radial-gradient(ellipse at 80% 70%, hsl(var(--accent) / 0.05), transparent 70%)
-            `,
-          }}
-        />
       </div>
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
