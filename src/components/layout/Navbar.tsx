@@ -20,20 +20,27 @@ export function Navbar() {
     }
   });
 
+  const navVariants = {
+    visible: { y: 0, opacity: 1 },
+    hidden: { y: "-100%", opacity: 0 },
+  };
+
+  const availableVariants = {
+    visible: { y: "100%", opacity: 0 },
+    hidden: { y: 0, opacity: 1 },
+  }
+
   return (
     <motion.header
       className="fixed top-4 w-full flex justify-center z-50"
     >
-      <div className="relative w-[500px] h-16">
-        {/* Main Navbar */}
-        <motion.nav
-          variants={{
-            visible: { y: 0, opacity: 1 },
-            hidden: { y: "-120%", opacity: 0 },
-          }}
+      <div className="relative w-[500px] h-16 bg-card/50 backdrop-blur-lg border border-white/10 rounded-full overflow-hidden">
+        {/* Main Navbar Content */}
+        <motion.div
+          variants={navVariants}
           animate={hidden ? "hidden" : "visible"}
           transition={{ duration: 0.35, ease: "easeInOut" }}
-          className="absolute inset-0 flex items-center justify-between gap-4 bg-card/50 backdrop-blur-lg border border-white/10 rounded-full py-2 px-4"
+          className="absolute inset-0 flex items-center justify-between gap-4 py-2 px-4"
         >
           <Link href="/">
             <Image
@@ -72,17 +79,14 @@ export function Navbar() {
           <Button asChild>
             <Link href="#contact">Contact</Link>
           </Button>
-        </motion.nav>
+        </motion.div>
 
         {/* Sticky "Available for work" bar */}
         <motion.div
-           variants={{
-            visible: { y: 0, opacity: 1 },
-            hidden: { y: "-120%", opacity: 0 },
-          }}
-          animate={hidden ? "visible" : "hidden"}
-          transition={{ duration: 0.35, ease: "easeInOut" }}
-          className="absolute inset-0 bg-card/50 backdrop-blur-lg border border-white/10 rounded-full"
+           variants={availableVariants}
+           animate={hidden ? "hidden" : "visible"}
+           transition={{ duration: 0.35, ease: "easeInOut" }}
+           className="absolute inset-0"
         >
             <div className="h-full flex items-center justify-center">
                 <div className="flex items-center gap-3">
