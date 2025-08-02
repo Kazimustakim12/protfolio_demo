@@ -28,7 +28,7 @@ export function AboutSection() {
       viewport={{ once: true, amount: 0.2 }}
     >
       <h2 className="text-2xl font-bold tracking-tight text-center sm:text-3xl mb-12">
-        <span className="text-primary mr-2">02.</span>
+        <span className="text-primary mr-2">01.</span>
         About Me
       </h2>
       <div className="grid grid-cols-1 md:grid-cols-5 gap-12 items-start">
