@@ -1,136 +1,71 @@
-"use client"
-
-import React, { useRef, useEffect } from 'react'
-import Matter from 'matter-js'
-import { Button } from '@/components/ui/button';
-
-export function PhysicsGame() {
-  const sceneRef = useRef<HTMLDivElement>(null);
-  const engineRef = useRef(Matter.Engine.create());
-  const hasInitialized = useRef(false);
-
-  const setup = () => {
-    const engine = engineRef.current;
-    const world = engine.world;
-    if (!sceneRef.current) return;
-
-    const canvasWidth = sceneRef.current.clientWidth;
-    const canvasHeight = sceneRef.current.clientHeight;
-
-    const render = Matter.Render.create({
-      element: sceneRef.current,
-      engine: engine,
-      options: {
-        width: canvasWidth,
-        height: canvasHeight,
-        wireframes: false,
-        background: 'transparent',
-      },
-    });
-
-    // Ground
-    const ground = Matter.Bodies.rectangle(canvasWidth / 2, canvasHeight - 25, canvasWidth, 50, { 
-      isStatic: true,
-      render: { fillStyle: 'hsl(var(--muted))' }
-    });
-
-    // Box stack
-    const boxStack = Matter.Composites.stack(canvasWidth * 0.65, canvasHeight - 250, 4, 4, 0, 0, (x, y) => {
-        return Matter.Bodies.rectangle(x, y, 40, 40, {
-            render: { fillStyle: 'hsl(var(--card))', strokeStyle: 'hsl(var(--accent))', lineWidth: 2 }
-        });
-    });
-
-    // Slingshot elements
-    const rock = Matter.Bodies.polygon(canvasWidth * 0.2, canvasHeight - 150, 8, 25, {
-        density: 0.004,
-        render: { fillStyle: 'hsl(var(--primary))' }
-    });
-    const anchor = { x: canvasWidth * 0.2, y: canvasHeight - 150 };
-    const elastic = Matter.Constraint.create({
-        pointA: anchor,
-        bodyB: rock,
-        stiffness: 0.05,
-        length: 10,
-        render: {
-            lineWidth: 3,
-            strokeStyle: 'hsl(var(--accent))'
-        }
-    });
-
-    // Mouse constraint for aiming
-    const mouse = Matter.Mouse.create(render.canvas);
-    const mouseConstraint = Matter.MouseConstraint.create(engine, {
-        mouse: mouse,
-        constraint: {
-            stiffness: 0.2,
-            render: {
-                visible: false
-            }
-        }
-    });
-
-    let firing = false;
-    Matter.Events.on(mouseConstraint, 'enddrag', (event) => {
-      if(event.body === rock) {
-        firing = true;
-        Matter.Body.setStatic(rock, false);
-      }
-    });
-
-    Matter.Events.on(engine, 'afterUpdate', () => {
-      if (firing && Math.abs(rock.position.x - anchor.x) < 20 && Math.abs(rock.position.y - anchor.y) < 20) {
-        Matter.Body.setPosition(rock, anchor);
-        Matter.Body.setVelocity(rock, { x: 0, y: 0 });
-        Matter.Body.setStatic(rock, true);
-        firing = false;
-      }
-    });
-
-    Matter.World.add(world, [ground, boxStack, rock, elastic, mouseConstraint]);
-    
-    Matter.Render.run(render);
-    Matter.Runner.run(Matter.Runner.create(), engine);
+{
+  "name": "nextn",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev --turbopack -p 9002",
+    "genkit:dev": "genkit start -- tsx src/ai/dev.ts",
+    "genkit:watch": "genkit start -- tsx --watch src/ai/dev.ts",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@genkit-ai/googleai": "^1.8.0",
+    "@genkit-ai/next": "^1.8.0",
+    "@gsap/react": "^2.1.1",
+    "@hookform/resolvers": "^4.1.3",
+    "@radix-ui/react-accordion": "^1.2.3",
+    "@radix-ui/react-alert-dialog": "^1.1.6",
+    "@radix-ui/react-avatar": "^1.1.3",
+    "@radix-ui/react-checkbox": "^1.1.4",
+    "@radix-ui/react-dialog": "^1.1.6",
+    "@radix-ui/react-dropdown-menu": "^2.1.6",
+    "@radix-ui/react-label": "^2.1.2",
+    "@radix-ui/react-menubar": "^1.1.6",
+    "@radix-ui/react-popover": "^1.1.6",
+    "@radix-ui/react-progress": "^1.1.2",
+    "@radix-ui/react-radio-group": "^1.2.3",
+    "@radix-ui/react-scroll-area": "^1.2.3",
+    "@radix-ui/react-select": "^2.1.6",
+    "@radix-ui/react-separator": "^1.1.2",
+    "@radix-ui/react-slider": "^1.2.3",
+    "@radix-ui/react-slot": "^1.1.2",
+    "@radix-ui/react-switch": "^1.1.3",
+    "@radix-ui/react-tabs": "^1.1.3",
+    "@radix-ui/react-toast": "^1.2.6",
+    "@radix-ui/react-tooltip": "^1.1.8",
+    "@tanstack-query-firebase/react": "^1.0.5",
+    "@tanstack/react-query": "^5.66.0",
+    "class-variance-authority": "^0.7.1",
+    "clsx": "^2.1.1",
+    "date-fns": "^3.6.0",
+    "dotenv": "^16.5.0",
+    "firebase": "^11.8.1",
+    "framer-motion": "^11.2.10",
+    "genkit": "^1.8.0",
+    "gsap": "^3.12.5",
+    "lucide-react": "^0.475.0",
+    "next": "15.2.3",
+    "patch-package": "^8.0.0",
+    "react": "^18.3.1",
+    "react-day-picker": "^8.10.1",
+    "react-dom": "^18.3.1",
+    "react-hook-form": "^7.54.2",
+    "recharts": "^2.15.1",
+    "tailwind-merge": "^3.0.1",
+    "tailwindcss-animate": "^1.0.7",
+    "zod": "^3.24.2"
+  },
+  "devDependencies": {
+    "@gsap/react": "^2.1.1",
+    "@types/node": "^20",
+    "@types/react": "^18",
+    "@types/react-dom": "^18",
+    "genkit-cli": "^1.8.0",
+    "postcss": "^8",
+    "tailwindcss": "^3.4.1",
+    "typescript": "^5"
   }
-
-  useEffect(() => {
-    if (typeof window !== 'undefined' && sceneRef.current && !hasInitialized.current) {
-        setup();
-        hasInitialized.current = true;
-    }
-
-    return () => {
-      if (engineRef.current) {
-        Matter.Engine.clear(engineRef.current);
-        const renderer = sceneRef.current?.querySelector('canvas');
-        if (renderer) {
-            renderer.remove();
-        }
-      }
-    };
-  }, []);
-  
-  const handleReset = () => {
-    // A simple reset by reloading might be easiest here, or re-running setup
-    if(engineRef.current && sceneRef.current) {
-        Matter.World.clear(engineRef.current.world, false);
-        Matter.Engine.clear(engineRef.current);
-         const renderer = sceneRef.current?.querySelector('canvas');
-        if (renderer) {
-            renderer.remove();
-        }
-        setup();
-    }
-  }
-
-  return (
-    <div className="w-[500px] h-[450px] bg-card/50 rounded-2xl shadow-2xl flex flex-col items-center justify-center gap-4 p-4 border border-white/10">
-        <div ref={sceneRef} className="w-full h-full rounded-lg overflow-hidden relative">
-           <div className="absolute top-2 left-2 text-xs text-muted-foreground p-2 rounded-md bg-background/50">
-                Drag and release the ball to fire!
-            </div>
-        </div>
-        <Button onClick={handleReset} variant="outline" size="sm">Reset</Button>
-    </div>
-  )
 }

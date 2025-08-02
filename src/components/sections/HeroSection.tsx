@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import { PhysicsGame } from "@/components/PhysicsGame";
+import { TicTacToe } from "@/components/TicTacToe";
 
 export function HeroSection() {
 
@@ -76,7 +76,7 @@ export function HeroSection() {
             variants={gameVariants}
             className="relative hidden md:flex justify-center items-center h-full"
         >
-          <PhysicsGame />
+          <TicTacToe />
         </motion.div>
       </motion.div>
     </section>
