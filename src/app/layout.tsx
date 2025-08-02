@@ -8,7 +8,7 @@ import { Footer } from '@/components/layout/Footer';
 const antonio = Antonio({
   subsets: ['latin'],
   variable: '--font-antonio',
-  weight: ['400', '700'],
+  weight: ['100', '400', '700'],
 });
 
 

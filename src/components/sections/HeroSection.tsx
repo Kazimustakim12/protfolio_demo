@@ -48,7 +48,7 @@ export function HeroSection() {
                     
                     <motion.h1
                         variants={itemVariants}
-                        className="font-serif text-6xl sm:text-7xl lg:text-8xl font-bold tracking-tight text-foreground"
+                        className="font-serif text-6xl sm:text-7xl lg:text-8xl font-thin tracking-tight text-foreground"
                     >
                         Mustakim Kazi.
                     </motion.h1>
