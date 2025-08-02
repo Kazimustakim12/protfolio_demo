@@ -36,7 +36,7 @@ const accordionContentVariants = {
 };
 
 export function ServicesSection() {
-  const [activeIndex, setActiveIndex] = useState<number | null>(null);
+  const [activeIndex, setActiveIndex] = useState<number | null>(0);
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
 
@@ -58,7 +58,7 @@ export function ServicesSection() {
       whileInView="visible"
       viewport={{ once: true, amount: 0.1 }}
     >
-      <div className="grid md:grid-cols-2 gap-12 items-center">
+      <div className="grid md:grid-cols-2 gap-12 items-start">
         <div className="relative">
           <motion.div variants={itemVariants}>
             <h2 className="text-5xl font-bold font-serif mb-4">WHAT I CAN DO FOR YOU</h2>
@@ -72,20 +72,19 @@ export function ServicesSection() {
             onMouseMove={handleMouseMove}
           >
             {servicesData.map((service, index) => (
-              <div
+              <motion.div
                 key={service.id}
-                className="border-b border-white/10 last:border-b-0 cursor-pointer"
+                className="border-b border-border last:border-b-0 cursor-pointer"
+                onMouseEnter={() => setHoveredIndex(index)}
+                onMouseLeave={() => setHoveredIndex(null)}
+                onClick={() => handleItemClick(index)}
+                variants={itemVariants}
               >
-                <motion.div 
-                  variants={itemVariants}
-                  onMouseEnter={() => setHoveredIndex(index)}
-                  onMouseLeave={() => setHoveredIndex(null)}
-                  onClick={() => handleItemClick(index)}
-                >
+                <div >
                   <div className="flex justify-between items-center py-6">
-                    <span className="text-xl font-semibold">
-                      <span className="text-accent text-3xl font-serif mr-4">0{index + 1}.</span>
-                      <span className={cn(activeIndex === index && "text-accent")}>{service.title}</span>
+                    <span className="text-2xl font-medium flex items-center gap-6">
+                      <span className="text-accent text-4xl font-serif">0{index + 1}</span>
+                      <span className={cn("transition-colors", activeIndex === index && "text-accent")}>{service.title}</span>
                     </span>
                     <ChevronUp
                       className={cn(
@@ -94,7 +93,7 @@ export function ServicesSection() {
                       )}
                     />
                   </div>
-                </motion.div>
+                </div>
                 <AnimatePresence initial={false}>
                   {activeIndex === index && (
                     <motion.div
@@ -105,7 +104,7 @@ export function ServicesSection() {
                       variants={accordionContentVariants}
                       className="overflow-hidden"
                     >
-                      <ul className="pb-6 pl-12 space-y-3 text-muted-foreground">
+                      <ul className="pb-6 pl-20 space-y-3 text-muted-foreground">
                         {service.features.map((feature, i) => (
                           <li key={i} className="flex items-start">
                             <Check className="w-5 h-5 text-accent mr-3 flex-shrink-0 mt-1" />
@@ -116,7 +115,7 @@ export function ServicesSection() {
                     </motion.div>
                   )}
                 </AnimatePresence>
-              </div>
+              </motion.div>
             ))}
 
             <AnimatePresence>
