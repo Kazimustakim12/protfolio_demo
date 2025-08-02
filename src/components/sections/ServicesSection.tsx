@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useState } from 'react';
@@ -36,6 +37,13 @@ const accordionContentVariants = {
 
 export function ServicesSection() {
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
+  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
+    const rect = e.currentTarget.getBoundingClientRect();
+    setMousePosition({ x: e.clientX - rect.left, y: e.clientY - rect.top });
+  };
+
 
   return (
     <motion.section
@@ -57,6 +65,7 @@ export function ServicesSection() {
 
           <div 
             className="relative"
+            onMouseMove={handleMouseMove}
             onMouseLeave={() => setActiveIndex(null)}
           >
             {servicesData.map((service, index) => (
@@ -106,11 +115,16 @@ export function ServicesSection() {
             <AnimatePresence>
                 {activeIndex !== null && servicesData[activeIndex] && (
                     <motion.div
-                    initial={{ opacity: 0, x: 100, y: (activeIndex * (activeIndex === 0 ? 90 : 89)) + 24, scale: 0.9 }}
-                    animate={{ opacity: 1, x: 100, y: (activeIndex * (activeIndex === 0 ? 90 : 89)) + 24, scale: 1 }}
-                    exit={{ opacity: 0, scale: 0.9 }}
-                    transition={{ type: 'spring', stiffness: 200, damping: 20 }}
-                    className="absolute top-0 left-1/2 w-64 h-40 pointer-events-none"
+                    initial={{ opacity: 0, scale: 0.8 }}
+                    animate={{ 
+                        opacity: 1, 
+                        scale: 1,
+                        x: mousePosition.x - 128, // Subtract half of image width
+                        y: mousePosition.y - 80, // Subtract half of image height
+                    }}
+                    exit={{ opacity: 0, scale: 0.8 }}
+                    transition={{ type: 'spring', stiffness: 300, damping: 25, mass: 0.5 }}
+                    className="absolute top-0 left-0 w-64 h-40 pointer-events-none z-10"
                     >
                         <Image
                             src={servicesData[activeIndex].imageUrl}
