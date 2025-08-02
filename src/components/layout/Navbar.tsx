@@ -1,54 +1,51 @@
 "use client";
 
-import { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { Code2 } from 'lucide-react';
+import Image from 'next/image';
 import { motion } from 'framer-motion';
-import { cn } from '@/lib/utils';
+import { Button } from '@/components/ui/button';
 
 export function Navbar() {
-  const [scrolled, setScrolled] = useState(false);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 10);
-    };
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-
   const navLinks = [
-    { name: '01. About', href: '#about' },
-    { name: '02. Work', href: '#work' },
-    { name: '03. Pricing', href: '#pricing' },
-    { name: '04. Contact', href: '#contact' },
+    { name: 'Home', href: '#' },
+    { name: 'About', href: '#about' },
+    { name: 'Projects', href: '#work' },
+    { name: 'Blog', href: '#' },
   ];
 
   return (
     <motion.header 
       initial={{ y: -100, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
-      transition={{ duration: 0.5 }}
-      className={cn(
-        "sticky top-0 z-50 transition-all duration-300",
-        scrolled ? "bg-background/80 backdrop-blur-lg shadow-md" : "bg-transparent"
-      )}
+      transition={{ duration: 0.5, delay: 1 }}
+      className="fixed top-4 left-1/2 -translate-x-1/2 z-50"
     >
-      <div className="py-4">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center">
-          <Link href="/" className="flex items-center gap-2 text-xl font-bold group">
-            <Code2 className="w-6 h-6 text-accent group-hover:animate-pulse" />
-            <span className="font-serif">KAZI</span>
-          </Link>
-          <nav className="hidden md:flex items-center space-x-8">
+      <nav className="flex items-center gap-4 bg-card/50 backdrop-blur-lg border border-white/10 rounded-full p-2">
+        <Link href="/">
+            <Image 
+                src="https://placehold.co/40x40.png" 
+                alt="Mustakim Kazi"
+                width={40}
+                height={40}
+                className="rounded-full border-2 border-transparent hover:border-accent transition-colors"
+                data-ai-hint="profile picture"
+            />
+        </Link>
+
+        <div className="hidden md:flex items-center gap-2">
             {navLinks.map((link) => (
-              <Link key={link.href} href={link.href} className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">
-                {link.name}
-              </Link>
+            <Button key={link.href} variant="ghost" asChild>
+                <Link href={link.href} className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">
+                    {link.name}
+                </Link>
+            </Button>
             ))}
-          </nav>
         </div>
-      </div>
+
+        <Button asChild>
+            <Link href="#contact">Contact</Link>
+        </Button>
+      </nav>
     </motion.header>
   );
 }

@@ -22,10 +22,9 @@ export function ContactSection() {
       whileInView="visible"
       viewport={{ once: true, amount: 0.2 }}
     >
-      <h2 className="section-heading mb-4">
-        <span className="text-accent font-sans text-xl font-medium">04.</span> What's Next?
+      <h2 className="text-5xl font-bold font-serif text-primary mb-6">
+        Get In Touch
       </h2>
-      <h3 className="text-5xl font-bold font-serif text-primary mb-6">Get In Touch</h3>
       <p className="max-w-xl mx-auto text-lg text-muted-foreground mb-10">
         My inbox is always open. Whether you have a question or a project proposal, or just want to say hello, I'll get back to you!
       </p>

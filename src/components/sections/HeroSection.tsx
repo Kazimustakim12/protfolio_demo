@@ -1,89 +1,84 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Button } from "@/components/ui/button";
-import { TicTacToe } from "@/components/TicTacToe";
+import Image from "next/image";
+
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.2,
+    },
+  },
+};
+
+const itemVariants = {
+  hidden: { opacity: 0, y: 50 },
+  visible: { opacity: 1, y: 0, transition: { type: "spring", stiffness: 100 } },
+};
+
 
 export function HeroSection() {
 
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.2,
-      },
-    },
-  };
-
-  const itemVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut" } },
-  };
-  
-  const gameVariants = {
-    hidden: { opacity: 0, scale: 0.8 },
-    visible: { opacity: 1, scale: 1, transition: { duration: 0.8, ease: "easeOut", delay: 0.4 } },
-  };
-
   return (
-    <section className="relative flex h-screen flex-col justify-center overflow-hidden">
-        <div className="absolute inset-0 -z-10 h-full w-full bg-background bg-[linear-gradient(to_right,#8080800a_1px,transparent_1px),linear-gradient(to_bottom,#8080800a_1px,transparent_1px)] bg-[size:14px_24px]"/>
-        <div className="absolute left-1/2 top-0 -z-10 h-32 w-48 -translate-x-1/2 rounded-full bg-secondary/50 blur-3xl" />
-
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-            <motion.div
-                variants={containerVariants}
-                initial="hidden"
-                animate="visible"
-                className="grid md:grid-cols-2 gap-12 items-center"
-            >
-                <div className="max-w-3xl">
-                    <motion.p 
-                        variants={itemVariants}
-                        className="text-lg text-accent font-medium font-sans mb-4"
-                    >
-                        Hi, my name is
-                    </motion.p>
-                    
-                    <motion.h1
-                        variants={itemVariants}
-                        className="text-6xl sm:text-7xl lg:text-8xl font-thin tracking-tight text-foreground"
-                    >
-                        Mustakim Kazi.
-                    </motion.h1>
-
-                    <motion.h2 
-                        variants={itemVariants}
-                        className="font-serif text-5xl sm:text-6xl lg:text-7xl font-bold tracking-tight text-muted-foreground mt-2"
-                    >
-                        I build things for the web.
-                    </motion.h2>
-
-                    <motion.p 
-                        variants={itemVariants}
-                        className="mt-8 max-w-xl text-lg text-muted-foreground leading-relaxed"
-                    >
-                        I'm a creative developer focused on crafting beautiful, functional, and high-performance web experiences. Currently, I'm focused on building accessible, human-centered products.
-                    </motion.p>
-                    
-                    <motion.div 
-                        variants={itemVariants}
-                        className="mt-12"
-                    >
-                        <Button size="lg" asChild className="text-lg py-7 px-8 bg-accent text-accent-foreground hover:bg-accent/90">
-                        <a href="#work">Check out my work!</a>
-                        </Button>
-                    </motion.div>
-                </div>
-                <motion.div 
-                    variants={gameVariants}
-                    className="relative hidden md:flex justify-center items-center h-full"
-                >
-                    <TicTacToe />
-                </motion.div>
+    <section className="relative flex h-screen items-center justify-center overflow-hidden">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+        <motion.div
+          variants={containerVariants}
+          initial="hidden"
+          animate="visible"
+          className="relative text-center"
+        >
+          <div className="flex flex-col md:flex-row items-center justify-center gap-8">
+            <motion.div variants={itemVariants} className="text-right">
+              <p className="font-sans text-muted-foreground">MUSTAKIM KAZI</p>
+              <h1 className="text-8xl lg:text-9xl font-bold font-serif tracking-tighter text-foreground">
+                CREATIVE
+              </h1>
             </motion.div>
-        </div>
+
+            <motion.div variants={itemVariants} custom={2}>
+              <div className="relative w-48 h-64 md:w-64 md:h-80 mx-auto">
+                <Image
+                  src="https://placehold.co/400x600.png"
+                  alt="Mustakim Kazi"
+                  width={400}
+                  height={600}
+                  className="rounded-3xl object-cover"
+                  data-ai-hint="man portrait professional"
+                />
+                 <motion.div
+                  initial={{ scale: 0, opacity: 0 }}
+                  animate={{ scale: 1, opacity: 1 }}
+                  transition={{ delay: 1, type: 'spring', stiffness: 200 }}
+                  className="absolute -bottom-6 -right-6 md:-bottom-8 md:-right-8"
+                >
+                  <div className="bg-green-400/80 backdrop-blur-sm text-black font-semibold rounded-full w-24 h-24 flex items-center justify-center text-2xl shadow-lg">
+                    Hi
+                  </div>
+                </motion.div>
+              </div>
+            </motion.div>
+
+            <motion.div variants={itemVariants} className="text-left">
+              <h1 className="text-8xl lg:text-9xl font-bold font-serif tracking-tighter text-foreground">
+                DEVELOPER
+              </h1>
+              <p className="font-sans text-muted-foreground max-w-xs mt-2">
+                I'm a developer focused on building beautiful and functional web experiences.
+              </p>
+            </motion.div>
+          </div>
+        </motion.div>
+      </div>
+
+       <motion.div
+          initial={{ y: '50vh', x: '50vw', scale: 0 }}
+          animate={{ y: Math.random() * -300 -50, x: Math.random() * 200 + 100, scale: 1 }}
+          transition={{ delay: 1.5, duration: 1.5, type: 'spring' }}
+          className="absolute w-4 h-4 rounded-full bg-green-400/80"
+      />
     </section>
   );
 }
