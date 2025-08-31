@@ -58,7 +58,7 @@
 
     --accent: 12 95% 62%; /* Vibrant Orange */
     --accent-foreground: 210 40% 98%;
-    
+
     --highlight: 82 99% 69%; /* Lime Green */
 
     --destructive: 0 84% 60%;
@@ -78,7 +78,7 @@
     background-color: hsl(var(--background));
     color: hsl(var(--foreground));
   }
-  
+
   html {
     scroll-behavior: smooth;
   }
@@ -98,10 +98,12 @@
   .text-balance {
     text-wrap: balance;
   }
-  .section-container {
-      @apply container mx-auto px-4 sm:px-6 lg:px-8 max-w-5xl py-24 sm:py-32;
+
+  .section-title {
+    @apply text-6xl font-bold font-serif mb-4;
   }
-  .section-heading {
-      @apply text-3xl font-bold tracking-tight text-foreground sm:text-4xl font-serif;
+
+  .section-container {
+    @apply container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl py-24 sm:py-32;
   }
 }
